@@ -43,6 +43,7 @@ namespace RPGGUI
                 heroes.Add(defaultHero2);
                 heroes.Add(defaultHero3);
 
+                Console.WriteLine("第一次登陆或没有保存的游戏数据，已创建默认英雄。");
             }
 
 
@@ -123,6 +124,7 @@ namespace RPGGUI
             Hero selectedHero = heroes[listBoxHeroes.SelectedIndex];
             DisplayHeroDetails(selectedHero);
         }
+
 
 
     }

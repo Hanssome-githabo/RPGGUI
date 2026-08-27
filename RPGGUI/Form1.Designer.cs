@@ -33,13 +33,13 @@
             this.listBoxHeroes = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lblName = new System.Windows.Forms.Label();
-            this.lblLevel = new System.Windows.Forms.Label();
-            this.lblClass = new System.Windows.Forms.Label();
-            this.lblAttack = new System.Windows.Forms.Label();
-            this.lblSpecial = new System.Windows.Forms.Label();
             this.lblSkill = new System.Windows.Forms.Label();
-            this.listBoxBag = new System.Windows.Forms.ListBox();
+            this.lblSpecial = new System.Windows.Forms.Label();
+            this.lblAttack = new System.Windows.Forms.Label();
+            this.lblClass = new System.Windows.Forms.Label();
+            this.lblLevel = new System.Windows.Forms.Label();
             this.lblSex = new System.Windows.Forms.Label();
+            this.listBoxBag = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -79,8 +79,9 @@
             // listBoxHeroes
             // 
             this.listBoxHeroes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxHeroes.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listBoxHeroes.FormattingEnabled = true;
-            this.listBoxHeroes.ItemHeight = 18;
+            this.listBoxHeroes.ItemHeight = 24;
             this.listBoxHeroes.Location = new System.Drawing.Point(3, 3);
             this.listBoxHeroes.Name = "listBoxHeroes";
             this.listBoxHeroes.Size = new System.Drawing.Size(91, 270);
@@ -117,6 +118,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblName.Location = new System.Drawing.Point(2, 2);
             this.lblName.Margin = new System.Windows.Forms.Padding(2);
             this.lblName.Name = "lblName";
@@ -124,54 +126,11 @@
             this.lblName.TabIndex = 0;
             this.lblName.Text = "label1";
             // 
-            // lblLevel
-            // 
-            this.lblLevel.AutoSize = true;
-            this.lblLevel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblLevel.Location = new System.Drawing.Point(2, 78);
-            this.lblLevel.Margin = new System.Windows.Forms.Padding(2);
-            this.lblLevel.Name = "lblLevel";
-            this.lblLevel.Size = new System.Drawing.Size(191, 34);
-            this.lblLevel.TabIndex = 1;
-            this.lblLevel.Text = "label2";
-            // 
-            // lblClass
-            // 
-            this.lblClass.AutoSize = true;
-            this.lblClass.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblClass.Location = new System.Drawing.Point(2, 116);
-            this.lblClass.Margin = new System.Windows.Forms.Padding(2);
-            this.lblClass.Name = "lblClass";
-            this.lblClass.Size = new System.Drawing.Size(191, 34);
-            this.lblClass.TabIndex = 2;
-            this.lblClass.Text = "label3";
-            // 
-            // lblAttack
-            // 
-            this.lblAttack.AutoSize = true;
-            this.lblAttack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblAttack.Location = new System.Drawing.Point(2, 154);
-            this.lblAttack.Margin = new System.Windows.Forms.Padding(2);
-            this.lblAttack.Name = "lblAttack";
-            this.lblAttack.Size = new System.Drawing.Size(191, 34);
-            this.lblAttack.TabIndex = 3;
-            this.lblAttack.Text = "label4";
-            // 
-            // lblSpecial
-            // 
-            this.lblSpecial.AutoSize = true;
-            this.lblSpecial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSpecial.Location = new System.Drawing.Point(2, 192);
-            this.lblSpecial.Margin = new System.Windows.Forms.Padding(2);
-            this.lblSpecial.Name = "lblSpecial";
-            this.lblSpecial.Size = new System.Drawing.Size(191, 34);
-            this.lblSpecial.TabIndex = 4;
-            this.lblSpecial.Text = "label5";
-            // 
             // lblSkill
             // 
             this.lblSkill.AutoSize = true;
             this.lblSkill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSkill.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblSkill.Location = new System.Drawing.Point(2, 230);
             this.lblSkill.Margin = new System.Windows.Forms.Padding(2);
             this.lblSkill.Name = "lblSkill";
@@ -179,26 +138,76 @@
             this.lblSkill.TabIndex = 5;
             this.lblSkill.Text = "label6";
             // 
-            // listBoxBag
+            // lblSpecial
             // 
-            this.listBoxBag.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxBag.FormattingEnabled = true;
-            this.listBoxBag.ItemHeight = 18;
-            this.listBoxBag.Location = new System.Drawing.Point(317, 3);
-            this.listBoxBag.Name = "listBoxBag";
-            this.listBoxBag.Size = new System.Drawing.Size(480, 276);
-            this.listBoxBag.TabIndex = 1;
+            this.lblSpecial.AutoSize = true;
+            this.lblSpecial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSpecial.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblSpecial.Location = new System.Drawing.Point(2, 192);
+            this.lblSpecial.Margin = new System.Windows.Forms.Padding(2);
+            this.lblSpecial.Name = "lblSpecial";
+            this.lblSpecial.Size = new System.Drawing.Size(191, 34);
+            this.lblSpecial.TabIndex = 4;
+            this.lblSpecial.Text = "label5";
+            // 
+            // lblAttack
+            // 
+            this.lblAttack.AutoSize = true;
+            this.lblAttack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblAttack.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblAttack.Location = new System.Drawing.Point(2, 154);
+            this.lblAttack.Margin = new System.Windows.Forms.Padding(2);
+            this.lblAttack.Name = "lblAttack";
+            this.lblAttack.Size = new System.Drawing.Size(191, 34);
+            this.lblAttack.TabIndex = 3;
+            this.lblAttack.Text = "label4";
+            // 
+            // lblClass
+            // 
+            this.lblClass.AutoSize = true;
+            this.lblClass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblClass.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblClass.Location = new System.Drawing.Point(2, 116);
+            this.lblClass.Margin = new System.Windows.Forms.Padding(2);
+            this.lblClass.Name = "lblClass";
+            this.lblClass.Size = new System.Drawing.Size(191, 34);
+            this.lblClass.TabIndex = 2;
+            this.lblClass.Text = "label3";
+            // 
+            // lblLevel
+            // 
+            this.lblLevel.AutoSize = true;
+            this.lblLevel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblLevel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblLevel.Location = new System.Drawing.Point(2, 78);
+            this.lblLevel.Margin = new System.Windows.Forms.Padding(2);
+            this.lblLevel.Name = "lblLevel";
+            this.lblLevel.Size = new System.Drawing.Size(191, 34);
+            this.lblLevel.TabIndex = 1;
+            this.lblLevel.Text = "label2";
             // 
             // lblSex
             // 
             this.lblSex.AutoSize = true;
             this.lblSex.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSex.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblSex.Location = new System.Drawing.Point(2, 40);
             this.lblSex.Margin = new System.Windows.Forms.Padding(2);
             this.lblSex.Name = "lblSex";
             this.lblSex.Size = new System.Drawing.Size(191, 34);
             this.lblSex.TabIndex = 6;
             this.lblSex.Text = "label1";
+            // 
+            // listBoxBag
+            // 
+            this.listBoxBag.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxBag.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.listBoxBag.FormattingEnabled = true;
+            this.listBoxBag.ItemHeight = 24;
+            this.listBoxBag.Location = new System.Drawing.Point(317, 3);
+            this.listBoxBag.Name = "listBoxBag";
+            this.listBoxBag.Size = new System.Drawing.Size(480, 276);
+            this.listBoxBag.TabIndex = 1;
             // 
             // Form1
             // 
