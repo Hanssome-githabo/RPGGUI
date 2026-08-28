@@ -54,5 +54,9 @@ namespace RPGGUI
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+
+
+
     }
 }

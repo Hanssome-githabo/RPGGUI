@@ -49,7 +49,7 @@
             this.btnAddEquipment = new System.Windows.Forms.Button();
             this.btnSaveGame = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnDeleteEquipment = new System.Windows.Forms.Button();
+            this.btnRemoveEquipment = new System.Windows.Forms.Button();
             this.btnQuitGame = new System.Windows.Forms.Button();
             this.btnLoadGame = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -261,7 +261,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnDeleteEquipment);
+            this.panel3.Controls.Add(this.btnRemoveEquipment);
             this.panel3.Location = new System.Drawing.Point(148, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(139, 76);
@@ -323,15 +323,16 @@
             this.button3.Text = "？";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // btnDeleteEquipment
+            // btnRemoveEquipment
             // 
-            this.btnDeleteEquipment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDeleteEquipment.Location = new System.Drawing.Point(0, 0);
-            this.btnDeleteEquipment.Name = "btnDeleteEquipment";
-            this.btnDeleteEquipment.Size = new System.Drawing.Size(139, 76);
-            this.btnDeleteEquipment.TabIndex = 3;
-            this.btnDeleteEquipment.Text = "删除装备";
-            this.btnDeleteEquipment.UseVisualStyleBackColor = true;
+            this.btnRemoveEquipment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRemoveEquipment.Location = new System.Drawing.Point(0, 0);
+            this.btnRemoveEquipment.Name = "btnRemoveEquipment";
+            this.btnRemoveEquipment.Size = new System.Drawing.Size(139, 76);
+            this.btnRemoveEquipment.TabIndex = 3;
+            this.btnRemoveEquipment.Text = "删除装备";
+            this.btnRemoveEquipment.UseVisualStyleBackColor = true;
+            this.btnRemoveEquipment.Click += new System.EventHandler(this.btnRemoveEquipment_Click);
             // 
             // btnQuitGame
             // 
@@ -495,7 +496,7 @@
         private System.Windows.Forms.Button btnQuitGame;
         private System.Windows.Forms.Button btnLoadGame;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button btnDeleteEquipment;
+        private System.Windows.Forms.Button btnRemoveEquipment;
         private System.Windows.Forms.Button btnAddEquipment;
         private System.Windows.Forms.Button btnSaveGame;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;

@@ -218,5 +218,44 @@ namespace RPGGUI
         }
         #endregion
 
+        #region 删除选中英雄按钮点击事件
+        // 如果你想在删除后自动选中下一件装备（比如删除第 2 件，自动选中第 3 件），
+        // 可以加一段逻辑，但当前方案已经足够，用户自己重新选择即可。
+        private void btnRemoveEquipment_Click(object sender, EventArgs e)
+        {
+            // 边界条件检查：确保选中了英雄和装备
+            if (listBoxHeroes.SelectedIndex < 0)
+            {
+                MessageBox.Show("请先选择一个英雄！");
+                return;
+            }
+            Hero currentHero = heroes[listBoxHeroes.SelectedIndex];
+            if(listBoxBag.SelectedIndex < 0 || listBoxBag.SelectedIndex >= currentHero.Bag.Count)
+            {
+                MessageBox.Show("请先选择一个装备！");
+                return;
+            }
+
+            // 弹出确认删除对话框
+            DialogResult result = MessageBox.Show(
+                $"确定要删除装备：{currentHero.Bag[listBoxBag.SelectedIndex].Name}吗？", 
+                "确认删除", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                currentHero.Bag.RemoveAt(listBoxBag.SelectedIndex);
+                RefreshBagList(currentHero);    
+                RPGModel.SaveGame(heroes); 
+            }
+        }
+        #endregion
+
+
+
+
+
     }
 }
