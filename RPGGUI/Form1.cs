@@ -153,6 +153,7 @@ namespace RPGGUI
         }
         #endregion
 
+        #region 删除选中英雄
         private void btnAddEquipment_Click(object sender, EventArgs e)
         {
             // 1. 检查是否选中了英雄
@@ -177,8 +178,10 @@ namespace RPGGUI
                 MessageBox.Show($"已添加装备：{newEquip.Name}");
             }
         }
+        #endregion
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        #region 窗体关闭事件，提示保存游戏数据
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e) // 窗体关闭事件，提示保存游戏数据
         {
             DialogResult result = MessageBox.Show(
                 "是否保存游戏数据？",             // 提示文本
@@ -198,10 +201,22 @@ namespace RPGGUI
                 e.Cancel = true; // 取消关闭窗口
             }
         }
+        #endregion
 
-
-
-
+        #region 保存游戏数据按钮点击事件
+        private void btnSaveGame_Click(object sender, EventArgs e) // 保存游戏数据按钮点击事件
+        {
+            // 无英雄数据时，提示用户没有数据可保存
+            if (heroes == null || heroes.Count == 0)
+            {
+                MessageBox.Show("没有英雄数据可保存。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            // 保存游戏数据
+            RPGModel.SaveGame(heroes);
+            MessageBox.Show("游戏数据已保存。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        #endregion
 
     }
 }

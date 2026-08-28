@@ -25,9 +25,6 @@ namespace RPGGUI
             comboBoxType.DataSource = Enum.GetValues(typeof(EquipmentType));
         }
 
-
-
-
         // 只读属性装备，用来把用户填好的数据组装成 Equipment 对象交给调用方
         public Equipment NewEquipment
         {

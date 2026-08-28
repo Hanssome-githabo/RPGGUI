@@ -311,6 +311,7 @@
             this.btnSaveGame.TabIndex = 1;
             this.btnSaveGame.Text = "保存游戏";
             this.btnSaveGame.UseVisualStyleBackColor = true;
+            this.btnSaveGame.Click += new System.EventHandler(this.btnSaveGame_Click);
             // 
             // button3
             // 

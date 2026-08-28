@@ -430,7 +430,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "AddEquipmentForm";
-            this.Text = "AddEquimentForm";
+            this.Text = "添加新装备";
             this.Load += new System.EventHandler(this.AddEquipmentForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
