@@ -12,7 +12,7 @@ namespace RPGGUI
     #region EquipmentType枚举：用来限制装备的种类，让代码更易读，防止乱写字符串
     //没有枚举，你写代码时判断装备类型只能靠数字或字符串
     //枚举：用来限制装备的种类，让代码更易读，防止乱写字符串
-    enum EquipmentType
+    public enum EquipmentType
     {
         Weapon = 1,     //武器
         Armor = 2,      //护甲
@@ -21,7 +21,7 @@ namespace RPGGUI
     #endregion
 
     #region Equipment结构体：装备的数据模板（结构体是值类型）
-    struct Equipment
+    public struct Equipment
     {
         // 1. 字段：装备的名称
         public string Name;
@@ -31,10 +31,6 @@ namespace RPGGUI
         public int HP;
         // 4. 字段：装备的类型（上面定义的枚举）
         public EquipmentType Type;
-
-
-
-
         // 5. 构造函数：方便我们快速创建装备时，一次性把数据填进去
         public Equipment(string name, int attack, int hp, EquipmentType type)
         {
@@ -191,6 +187,7 @@ namespace RPGGUI
             Console.WriteLine($"敏捷：{Agility}");
         }
     }
+
 
 
     internal class RPGModel

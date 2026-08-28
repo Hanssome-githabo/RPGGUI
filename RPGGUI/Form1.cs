@@ -47,12 +47,11 @@ namespace RPGGUI
                 Console.WriteLine("第一次登陆或没有保存的游戏数据，已创建默认英雄。");
             }
 
-
             RefreshHeroList();
 
-
         }
-
+        
+        #region 刷新英雄列表
         // 刷新英雄列表
         private void RefreshHeroList()
         {
@@ -68,10 +67,33 @@ namespace RPGGUI
             }
 
         }
+        #endregion
 
+        #region 显示选中英雄的详细信息
         // 显示选中英雄的详细信息
         private void DisplayHeroDetails(Hero hero)
         {
+            #region 使用 switch 表达式来映射职业名称
+            // 使用 switch 表达式来映射职业名称
+            string className;
+            switch (hero.GetType().Name)
+            {
+                case "Warrior":
+                    className = "战士";
+                    break;
+                case "Mage":
+                    className = "法师";
+                    break;
+                case "Assassin":
+                    className = "刺客";
+                    break;
+                default:
+                    className = hero.GetType().Name;
+                    break;
+            }
+            lblClass.Text = $"英雄职业：{className}";
+            #endregion
+
             if (hero != null)
             {
                 lblName.Text = $"英雄名称：{hero.Name}";
@@ -96,7 +118,9 @@ namespace RPGGUI
                 RefreshBagList(hero);
             }
         }
+        #endregion
 
+        #region  刷新背包列表
         // 刷新背包列表
         private void RefreshBagList(Hero hero)
         {
@@ -113,7 +137,9 @@ namespace RPGGUI
                 listBoxBag.Items.Add("（空）");
             }
         }
+        #endregion
 
+        #region 点击英雄列表时，显示选中英雄的详细信息
         // 点击英雄列表时，显示选中英雄的详细信息
         private void listBoxHeroes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -125,6 +151,55 @@ namespace RPGGUI
             Hero selectedHero = heroes[listBoxHeroes.SelectedIndex];
             DisplayHeroDetails(selectedHero);
         }
+        #endregion
+
+        private void btnAddEquipment_Click(object sender, EventArgs e)
+        {
+            // 1. 检查是否选中了英雄
+            if(listBoxHeroes.SelectedIndex < 0)
+            {
+                MessageBox.Show("请先选择一个英雄！");
+                return;
+            }
+            // 2. 弹出添加装备窗口
+            AddEquipmentForm addEquipmentForm = new AddEquipmentForm();
+            if(addEquipmentForm.ShowDialog() == DialogResult.OK)
+            {
+                // 3. 获取用户输入的装备
+                Equipment newEquip = addEquipmentForm.NewEquipment;
+
+                // 4. 添加到当前英雄的背包
+                Hero currentHero = heroes[listBoxHeroes.SelectedIndex];
+                currentHero.Bag.Add(newEquip);
+
+                // 5. 刷新界面
+                RefreshBagList(currentHero);
+                MessageBox.Show($"已添加装备：{newEquip.Name}");
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "是否保存游戏数据？",             // 提示文本
+                "提示",                           // 标题
+                MessageBoxButtons.YesNoCancel,    // 按钮类型
+                MessageBoxIcon.Question           // 图标类型
+                );         
+
+            if (result == DialogResult.Yes)
+            {
+                // 保存游戏数据
+                RPGModel.SaveGame(heroes);
+                MessageBox.Show("游戏数据已保存。","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                e.Cancel = true; // 取消关闭窗口
+            }
+        }
+
+
 
 
 
