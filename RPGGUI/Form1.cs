@@ -19,6 +19,7 @@ namespace RPGGUI
         }
 
         private List<Hero> heroes;
+
         private void Form1_Load(object sender, EventArgs e)
         {
             heroes = RPGModel.LoadGame();
