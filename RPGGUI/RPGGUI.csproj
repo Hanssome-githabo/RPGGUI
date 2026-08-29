@@ -83,6 +83,12 @@
     <Compile Include="AddEquimentForm.Designer.cs">
       <DependentUpon>AddEquimentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddHeroForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddHeroForm.Designer.cs">
+      <DependentUpon>AddHeroForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     <Compile Include="RPGModel.cs" />
     <EmbeddedResource Include="AddEquimentForm.resx">
       <DependentUpon>AddEquimentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddHeroForm.resx">
+      <DependentUpon>AddHeroForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -91,7 +91,6 @@ namespace RPGGUI
                     className = hero.GetType().Name;
                     break;
             }
-            lblClass.Text = $"英雄职业：{className}";
             #endregion
 
             if (hero != null)
@@ -100,7 +99,7 @@ namespace RPGGUI
                 lblLevel.Text = $"英雄等级：{hero.Level.ToString()}";
                 string Sex = hero.Sex == "M" ? "男" : "女";
                 lblSex.Text = $"英雄性别：{Sex}";
-                lblClass.Text = $"英雄职业：{hero.GetType().Name}";
+                lblClass.Text = $"英雄职业：{className}";
                 lblAttack.Text = $"英雄攻击力：{hero.TotalAttack}"; 
                 // 对于攻击力的计算被调用时总会累加，调用一次就累加一次，所以在这里
                 // 调用的GetHeroAttack中定义了一个totalAttack变量来存储总攻击力，
@@ -218,7 +217,7 @@ namespace RPGGUI
         }
         #endregion
 
-        #region 删除选中英雄按钮点击事件
+        #region 删除选中英雄的装备按钮点击事件
         // 如果你想在删除后自动选中下一件装备（比如删除第 2 件，自动选中第 3 件），
         // 可以加一段逻辑，但当前方案已经足够，用户自己重新选择即可。
         private void btnRemoveEquipment_Click(object sender, EventArgs e)
@@ -251,10 +250,35 @@ namespace RPGGUI
                 RPGModel.SaveGame(heroes); 
             }
         }
+
+
+
+
         #endregion
 
+        #region 删除选中英雄按钮点击事件
+        private void btnAddHero_Click(object sender, EventArgs e)
+        {
+            AddHeroForm addHeroForm = new AddHeroForm();
+            if(addHeroForm.ShowDialog() == DialogResult.OK)
+            {
+                Hero newHero = addHeroForm.NewHero;
+                if (newHero == null)
+                {
+                    MessageBox.Show("未创建新英雄。");
+                    return;
+                }
+                else 
+                {
+                    heroes.Add(newHero);
+                    RefreshHeroList();
+                    RPGModel.SaveGame(heroes);
+                    MessageBox.Show($"已添加新英雄：{newHero.Name}");
+                }
 
-
+            }
+        }
+        #endregion
 
 
     }

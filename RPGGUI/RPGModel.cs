@@ -48,9 +48,8 @@ namespace RPGGUI
     [JsonDerivedType(typeof(Mage), typeDiscriminator: "mage")]
     [JsonDerivedType(typeof(Assassin), typeDiscriminator: "assassin")]
 
-    abstract class Hero
+    public abstract class Hero
     {
-        // 重新推送一下12312412312
         //  ====共有字段（所有英雄都有的特性）=====
         public string Name;         //英雄名称
         public string Sex;            //性别（M或者F）
@@ -128,7 +127,7 @@ namespace RPGGUI
 
     }
 
-    class Warrior : Hero
+    public class Warrior : Hero
     {
         public int Stamina; //耐力
         public Warrior(string name, int level, string sex, float attack, int stamina) : base(name, level, sex, attack)
@@ -148,7 +147,7 @@ namespace RPGGUI
         }
     }
 
-    class Mage : Hero
+    public class Mage : Hero
     {
         public int Mana; //耐力
         public Mage(string name, int level, string sex, float attack, int mana) : base(name, level, sex, attack)
@@ -168,7 +167,7 @@ namespace RPGGUI
         }
     }
 
-    class Assassin : Hero
+    public class Assassin : Hero
     {
         public int Agility; //耐力
         public Assassin(string name, int level, string sex, float attack, int agility) : base(name, level, sex, attack)
@@ -187,8 +186,6 @@ namespace RPGGUI
             Console.WriteLine($"敏捷：{Agility}");
         }
     }
-
-
 
     internal class RPGModel
     {
