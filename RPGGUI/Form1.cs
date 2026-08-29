@@ -278,8 +278,36 @@ namespace RPGGUI
 
             }
         }
+
         #endregion
 
+        #region 删除选中英雄按钮点击事件
+        private void btnRemoveHero_Click(object sender, EventArgs e)
+        {
+            if(heroes == null || heroes.Count == 0)
+            {
+                MessageBox.Show("没有英雄可删除！");
+                return;
+            }
+            if (listBoxHeroes.SelectedIndex < 0 || listBoxHeroes.SelectedIndex >= heroes.Count)
+            {
+                MessageBox.Show("请先选择一个英雄！");
+                return;
+            }
+            DialogResult result = MessageBox.Show(
+                $"确定要删除英雄：{heroes[listBoxHeroes.SelectedIndex].Name}吗？", 
+                "确认删除", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Warning
+            );
 
+            if (result == DialogResult.Yes)
+            {
+                heroes.RemoveAt(listBoxHeroes.SelectedIndex);
+                RefreshHeroList();
+                RPGModel.SaveGame(heroes);
+            }
+        }
+        #endregion
     }
 }

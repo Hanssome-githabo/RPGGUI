@@ -385,6 +385,7 @@
             this.btnRemoveHero.TabIndex = 3;
             this.btnRemoveHero.Text = "删除英雄";
             this.btnRemoveHero.UseVisualStyleBackColor = true;
+            this.btnRemoveHero.Click += new System.EventHandler(this.btnRemoveHero_Click);
             // 
             // panel4
             // 
