@@ -143,16 +143,18 @@ namespace RPGGUI
         private void RefreshBagList(Hero hero)
         {
             listBoxBag.Items.Clear();
-            if (hero != null)
-            {
-                foreach (var item in hero.Bag)
-                {
-                    listBoxBag.Items.Add($"{item.Name} (攻击力: {item.Attack}, 血量: {item.HP}, 类型: {item.Type})");
-                }
-            }
-            else
+
+            // 1. 先处理 hero 为 null 或背包为空的情况
+            if (hero == null || hero.Bag.Count == 0)
             {
                 listBoxBag.Items.Add("（空）");
+                return;
+            }
+
+            // 2. 再处理有装备的情况
+            foreach (var item in hero.Bag)
+            {
+                listBoxBag.Items.Add($"{item.Name} (攻击力: {item.Attack}, 血量: {item.HP}, 类型: {item.Type})");
             }
         }
         #endregion
@@ -327,6 +329,32 @@ namespace RPGGUI
                 RPGModel.SaveGame(heroes);
             }
         }
+
         #endregion
+
+        #region 退出游戏按钮点击事件
+        private void btnQuitGame_Main_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "是否保存游戏数据？",             // 提示文本
+                "提示",                           // 标题
+                MessageBoxButtons.YesNoCancel,    // 按钮类型
+                MessageBoxIcon.Question           // 图标类型
+                );
+            if (result == DialogResult.Yes)
+            {
+                // 直接保存并关闭，跳过 FormClosing 的二次提醒
+                RPGModel.SaveGame(heroes);
+                MessageBox.Show("游戏数据已保存。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Environment.Exit(0); // 强制退出，不触发 FormClosing
+                                     // 或者 this.Close(); 但会触发 FormClosing
+            }
+
+
+        }
+        #endregion
+
+
+
     }
 }

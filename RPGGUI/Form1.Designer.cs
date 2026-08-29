@@ -43,7 +43,7 @@
             this.listBoxBag = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnQuitGame_Main = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnQuitGame = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -96,7 +96,7 @@
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.03493F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.96507F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 494);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
@@ -280,7 +280,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel7.Controls.Add(this.button2, 3, 0);
+            this.tableLayoutPanel7.Controls.Add(this.btnQuitGame_Main, 3, 0);
             this.tableLayoutPanel7.Controls.Add(this.panel6, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.panel5, 1, 0);
@@ -292,15 +292,16 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(583, 83);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
-            // button2
+            // btnQuitGame_Main
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(438, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(142, 77);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "结束游戏";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnQuitGame_Main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnQuitGame_Main.Location = new System.Drawing.Point(438, 3);
+            this.btnQuitGame_Main.Name = "btnQuitGame_Main";
+            this.btnQuitGame_Main.Size = new System.Drawing.Size(142, 77);
+            this.btnQuitGame_Main.TabIndex = 3;
+            this.btnQuitGame_Main.Text = "结束游戏";
+            this.btnQuitGame_Main.UseVisualStyleBackColor = true;
+            this.btnQuitGame_Main.Click += new System.EventHandler(this.btnQuitGame_Main_Click);
             // 
             // panel6
             // 
@@ -504,7 +505,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnQuitGame_Main;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btnRemoveHero;
     }
