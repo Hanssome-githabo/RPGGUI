@@ -16,7 +16,7 @@ namespace RPGGUI
         public AddEquipmentForm()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterParent; // 弹窗居中显示();
+            this.StartPosition = FormStartPosition.CenterParent; // 弹窗居中显示
         }
 
         private void AddEquipmentForm_Load(object sender, EventArgs e)

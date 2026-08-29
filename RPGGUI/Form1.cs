@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace RPGGUI
 {
     public partial class Form1 : Form
@@ -65,7 +64,27 @@ namespace RPGGUI
                 listBoxHeroes.SelectedIndex = 0;
                 DisplayHeroDetails(heroes[0]);
             }
+            else
+            {
+                // 没有英雄时，清空详情显示
+                ClearHeroDetails();
+            }
 
+        }
+        #endregion
+
+        #region 清空英雄详情显示
+        private void ClearHeroDetails()
+        {
+            lblName.Text = "英雄名称：";
+            lblLevel.Text = "英雄等级：";
+            lblSex.Text = "英雄性别：";
+            lblClass.Text = "英雄职业：";
+            lblAttack.Text = "英雄攻击力：";
+            lblSpecial.Text = "特殊属性：";
+            lblSkill.Text = "技能：";
+            listBoxBag.Items.Clear();
+            listBoxBag.Items.Add("（空）");
         }
         #endregion
 
@@ -152,7 +171,7 @@ namespace RPGGUI
         }
         #endregion
 
-        #region 删除选中英雄
+        #region 为选中英雄添加装备按钮点击事件
         private void btnAddEquipment_Click(object sender, EventArgs e)
         {
             // 1. 检查是否选中了英雄
