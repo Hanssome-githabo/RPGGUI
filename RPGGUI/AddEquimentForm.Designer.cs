@@ -171,6 +171,7 @@
             // 
             this.numericUpDownHP.DecimalPlaces = 1;
             this.numericUpDownHP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numericUpDownHP.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.numericUpDownHP.Increment = new decimal(new int[] {
             100,
             0,
@@ -183,7 +184,7 @@
             0,
             0});
             this.numericUpDownHP.Name = "numericUpDownHP";
-            this.numericUpDownHP.Size = new System.Drawing.Size(638, 28);
+            this.numericUpDownHP.Size = new System.Drawing.Size(638, 35);
             this.numericUpDownHP.TabIndex = 1;
             // 
             // panel10
@@ -219,6 +220,7 @@
             // 
             this.numericUpDownAttack.DecimalPlaces = 1;
             this.numericUpDownAttack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numericUpDownAttack.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.numericUpDownAttack.Increment = new decimal(new int[] {
             10,
             0,
@@ -236,7 +238,7 @@
             0,
             -2147483648});
             this.numericUpDownAttack.Name = "numericUpDownAttack";
-            this.numericUpDownAttack.Size = new System.Drawing.Size(638, 28);
+            this.numericUpDownAttack.Size = new System.Drawing.Size(638, 35);
             this.numericUpDownAttack.TabIndex = 0;
             // 
             // panel6
@@ -280,6 +282,7 @@
             // 
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(144, 34);
