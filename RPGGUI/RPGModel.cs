@@ -49,7 +49,6 @@ namespace RPGGUI
     [JsonDerivedType(typeof(Mage), typeDiscriminator: "mage")]
     [JsonDerivedType(typeof(Assassin), typeDiscriminator: "assassin")]
 
-
     // Hero抽象类实现了 ISaveable 接口，（注意冒号后面，先写父类，再写接口）
     // 这意味着 Hero 类必须提供 name 和 Bag 属性。
     public abstract class Hero : ISaveable
@@ -219,14 +218,12 @@ namespace RPGGUI
         List<Equipment> Bag { get; } // 能保存的东西必须有背包
     }
 
-
-
-
     internal class RPGModel
     {
+        #region 未使用
         static void Main1(string[] args)
         {
-            List<Hero> heroes = LoadGame(); // 尝试加载
+            List<Hero> heroes = LoadGame<Hero>(); // 尝试加载
 
             if (heroes == null) // 如果没有存档，或者加载失败
             {
@@ -274,7 +271,7 @@ namespace RPGGUI
                 switch (input)
                 {
                     // 查看所有英雄信息
-                    case "1": 
+                    case "1":
                         Console.WriteLine("====== 英雄小队详细信息 =====");
 
                         //用for循环遍历英雄数组（下标从0开始）
@@ -287,7 +284,7 @@ namespace RPGGUI
                         break;
 
                     //给指定英雄添加装备
-                    case "2": 
+                    case "2":
                         Console.WriteLine("给英雄添加装备");
                         //查看所有英雄信息
                         for (int i = 0; i < heroes.Count; i++)
@@ -336,7 +333,7 @@ namespace RPGGUI
                         break;
 
                     // 按攻击力排序英雄背包
-                    case "3": 
+                    case "3":
                         Console.WriteLine("按攻击力排序英雄背包(冒泡排序-降序");
                         for (int i = 0; i < heroes.Count; i++)
                         {
@@ -403,8 +400,8 @@ namespace RPGGUI
                         break;
 
                     //删除指定装备
-                    case "5": 
-                              //提示并展示英雄装备
+                    case "5":
+                        //提示并展示英雄装备
                         Console.WriteLine("删除指定装备");
                         for (int i = 0; i < heroes.Count; i++)
                         {
@@ -461,7 +458,7 @@ namespace RPGGUI
 
 
         }
-
+        #endregion
 
         #region 从输入得到英雄的0基下标，或返回主菜单
         //静态参数函数 不需要 new 对象，允许我们在没有对象的情况下调用它
@@ -559,13 +556,9 @@ namespace RPGGUI
         #endregion
 
         #region 保存json
-        // 以前只能存 List<Hero>
-        // 现在可以存任何实现了 ISaveable 接口的东西！
-        // List<Hero> 可以直接传进来，因为 IEnumerable<T> 支持协变。
-        //IEnumerable<ISaveable> 是比 List<Hero> 更抽象的类型。
-        //IEnumerable<ISaveable> 可以协变为更具体的类型，也就是 List<Hero>。
-        //List<Hero> 隐式转换为 IEnumerable<ISaveable>，利用的是协变直接赋值给IEnumerable<ISaveable>
-        public static void SaveGame(IEnumerable<ISaveable> saveables)
+        // 泛型参数 T 允许我们在保存时传入任何实现了 ISaveable 接口的对象列表。
+        // 约束 where T : ISaveable 确保传入的类型必须实现 ISaveable 接口。
+        public static void SaveGame<T>(List<T> saveables) where T : ISaveable
         {
             string jsonString = JsonSerializer.Serialize(saveables, options);
             File.WriteAllText("save.json", jsonString);
@@ -574,15 +567,13 @@ namespace RPGGUI
         #endregion
 
         #region 读取json
-        public static List<Hero> LoadGame()
+        public static List<T> LoadGame<T>() where T : ISaveable
         {
-            // 1. 检查文件存不存在
-            if (!File.Exists("save.json")) { return null; }
+            if (!File.Exists("save.json")) return null;
             // 2. 读取文件里的 JSON 字符串
             string jsonString = File.ReadAllText("save.json");
             // 3. 把 JSON 字符串反翻译回对象列表（使用同样的 options）
-            List<Hero> heroes = JsonSerializer.Deserialize<List<Hero>>(jsonString, options);
-            return heroes;
+            return JsonSerializer.Deserialize<List<T>>(jsonString, options);
         }
         #endregion
 

@@ -21,7 +21,7 @@ namespace RPGGUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            heroes = RPGModel.LoadGame();
+            heroes = RPGModel.LoadGame<Hero>();
             if (heroes == null || heroes.Count == 0)
             {
                 heroes = new List<Hero>();
