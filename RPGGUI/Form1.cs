@@ -12,42 +12,18 @@ namespace RPGGUI
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        
+        private List<Hero> heroes;
+
+        public Form1(List<Hero> loadedHeroes)
         {
             InitializeComponent();
+            heroes = loadedHeroes ?? new List<Hero>();
         }
-
-        private List<Hero> heroes;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            heroes = RPGModel.LoadGame<Hero>();
-            if (heroes == null || heroes.Count == 0)
-            {
-                heroes = new List<Hero>();
-
-                Warrior defaultHero1 = new Warrior("剑圣", 5, "M", 60.0f, 100);
-                defaultHero1.Bag.Add(new Equipment("铁剑", 12, 0, EquipmentType.Weapon));
-                defaultHero1.Bag.Add(new Equipment("残暴之力", 80, 200, EquipmentType.Weapon));
-                defaultHero1.Bag.Add(new Equipment("饮血剑", 90, 500, EquipmentType.Weapon));
-                defaultHero1.Bag.Add(new Equipment("鬼索的狂暴之刃", 60, 300, EquipmentType.Weapon));
-                defaultHero1.Bag.Add(new Equipment("破败王者之刃", 50, 300, EquipmentType.Weapon));
-
-                Mage defaultHero2 = new Mage("阿狸", 5, "F", 50.0f, 100);
-                defaultHero2.Bag.Add(new Equipment("魔力戒指", 4, 20, EquipmentType.Accessory));
-
-                Assassin defaultHero3 = new Assassin("劫", 5, "M", 55.0f, 50);
-                defaultHero3.Bag.Add(new Equipment("皮甲", 2, 10, EquipmentType.Armor));
-
-                heroes.Add(defaultHero1);
-                heroes.Add(defaultHero2);
-                heroes.Add(defaultHero3);
-
-                Console.WriteLine("第一次登陆或没有保存的游戏数据，已创建默认英雄。");
-            }
-
             RefreshHeroList();
-
         }
         
         #region 刷新英雄列表
