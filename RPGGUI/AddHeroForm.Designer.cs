@@ -31,27 +31,27 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxHeroName = new System.Windows.Forms.TextBox();
+            this.numericUpDownSpecial = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownAttack = new System.Windows.Forms.NumericUpDown();
+            this.lblSpecial = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxHeroType = new System.Windows.Forms.ComboBox();
             this.numericUpDownLevel = new System.Windows.Forms.NumericUpDown();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblSpecial = new System.Windows.Forms.Label();
-            this.numericUpDownAttack = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownSpecial = new System.Windows.Forms.NumericUpDown();
+            this.textBoxHeroName = new System.Windows.Forms.TextBox();
             this.comboBoxGender = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpecial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAttack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLevel)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAttack)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpecial)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -114,26 +114,67 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(794, 261);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
-            // label2
+            // numericUpDownSpecial
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 43);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "输入英雄名字：";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.numericUpDownSpecial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numericUpDownSpecial.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.numericUpDownSpecial.Location = new System.Drawing.Point(199, 218);
+            this.numericUpDownSpecial.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownSpecial.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownSpecial.Name = "numericUpDownSpecial";
+            this.numericUpDownSpecial.Size = new System.Drawing.Size(592, 35);
+            this.numericUpDownSpecial.TabIndex = 12;
             // 
-            // textBoxHeroName
+            // numericUpDownAttack
             // 
-            this.textBoxHeroName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxHeroName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxHeroName.Location = new System.Drawing.Point(199, 3);
-            this.textBoxHeroName.Name = "textBoxHeroName";
-            this.textBoxHeroName.Size = new System.Drawing.Size(592, 35);
-            this.textBoxHeroName.TabIndex = 1;
+            this.numericUpDownAttack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numericUpDownAttack.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.numericUpDownAttack.Location = new System.Drawing.Point(199, 175);
+            this.numericUpDownAttack.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownAttack.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownAttack.Name = "numericUpDownAttack";
+            this.numericUpDownAttack.Size = new System.Drawing.Size(592, 35);
+            this.numericUpDownAttack.TabIndex = 11;
+            // 
+            // lblSpecial
+            // 
+            this.lblSpecial.AutoSize = true;
+            this.lblSpecial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSpecial.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblSpecial.Location = new System.Drawing.Point(3, 215);
+            this.lblSpecial.Name = "lblSpecial";
+            this.lblSpecial.Size = new System.Drawing.Size(190, 46);
+            this.lblSpecial.TabIndex = 10;
+            this.lblSpecial.Text = "独有属性：";
+            this.lblSpecial.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(3, 172);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(190, 43);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "设置攻击力：";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
@@ -146,6 +187,18 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "选择职业：";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(190, 43);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "输入英雄名字：";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
@@ -191,6 +244,25 @@
             this.numericUpDownLevel.Size = new System.Drawing.Size(592, 35);
             this.numericUpDownLevel.TabIndex = 6;
             // 
+            // textBoxHeroName
+            // 
+            this.textBoxHeroName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxHeroName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxHeroName.Location = new System.Drawing.Point(199, 3);
+            this.textBoxHeroName.Name = "textBoxHeroName";
+            this.textBoxHeroName.Size = new System.Drawing.Size(592, 35);
+            this.textBoxHeroName.TabIndex = 1;
+            // 
+            // comboBoxGender
+            // 
+            this.comboBoxGender.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxGender.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxGender.FormattingEnabled = true;
+            this.comboBoxGender.Location = new System.Drawing.Point(199, 132);
+            this.comboBoxGender.Name = "comboBoxGender";
+            this.comboBoxGender.Size = new System.Drawing.Size(592, 32);
+            this.comboBoxGender.TabIndex = 13;
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
@@ -206,17 +278,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(794, 48);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
-            // button1
-            // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(391, 42);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "确定";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -228,77 +289,16 @@
             this.button2.Text = "取消";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // button1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(3, 172);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(190, 43);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "设置攻击力：";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblSpecial
-            // 
-            this.lblSpecial.AutoSize = true;
-            this.lblSpecial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSpecial.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblSpecial.Location = new System.Drawing.Point(3, 215);
-            this.lblSpecial.Name = "lblSpecial";
-            this.lblSpecial.Size = new System.Drawing.Size(190, 46);
-            this.lblSpecial.TabIndex = 10;
-            this.lblSpecial.Text = "独有属性：";
-            this.lblSpecial.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // numericUpDownAttack
-            // 
-            this.numericUpDownAttack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDownAttack.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.numericUpDownAttack.Location = new System.Drawing.Point(199, 175);
-            this.numericUpDownAttack.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.numericUpDownAttack.Minimum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDownAttack.Name = "numericUpDownAttack";
-            this.numericUpDownAttack.Size = new System.Drawing.Size(592, 35);
-            this.numericUpDownAttack.TabIndex = 11;
-            // 
-            // numericUpDownSpecial
-            // 
-            this.numericUpDownSpecial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDownSpecial.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.numericUpDownSpecial.Location = new System.Drawing.Point(199, 218);
-            this.numericUpDownSpecial.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.numericUpDownSpecial.Minimum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDownSpecial.Name = "numericUpDownSpecial";
-            this.numericUpDownSpecial.Size = new System.Drawing.Size(592, 35);
-            this.numericUpDownSpecial.TabIndex = 12;
-            // 
-            // comboBoxGender
-            // 
-            this.comboBoxGender.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxGender.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBoxGender.FormattingEnabled = true;
-            this.comboBoxGender.Location = new System.Drawing.Point(199, 132);
-            this.comboBoxGender.Name = "comboBoxGender";
-            this.comboBoxGender.Size = new System.Drawing.Size(592, 32);
-            this.comboBoxGender.TabIndex = 13;
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(391, 42);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "确定";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // AddHeroForm
             // 
@@ -313,10 +313,10 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpecial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAttack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLevel)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAttack)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpecial)).EndInit();
             this.ResumeLayout(false);
 
         }

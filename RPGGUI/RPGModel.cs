@@ -115,7 +115,6 @@ namespace RPGGUI
             if (Bag == null)
             {
                 Console.WriteLine("空");
-
             }
             // 使用for循环遍历背包（带下标，方便以后做修改操作）
             for (int i = 0; i < Bag.Count; i++)
