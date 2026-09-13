@@ -58,6 +58,8 @@
             this.btnAddEquipment = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnRemoveEquipment = new System.Windows.Forms.Button();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.listViewBag = new System.Windows.Forms.ListView();
             this.装备名称 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.攻击力 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -67,8 +69,6 @@
             this.menuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemEquip = new System.Windows.Forms.ToolStripMenuItem();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.lblBagTitle = new System.Windows.Forms.Label();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
@@ -90,9 +90,9 @@
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.contextMenuBag.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.contextMenuBag.SuspendLayout();
             this.panel8.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -123,7 +123,7 @@
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.03493F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.96507F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 452);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -462,6 +462,30 @@
             this.btnRemoveEquipment.UseVisualStyleBackColor = true;
             this.btnRemoveEquipment.Click += new System.EventHandler(this.btnRemoveEquipment_Click);
             // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 1;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Controls.Add(this.panel7, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.panel8, 0, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(383, 3);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.865979F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.13402F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(584, 443);
+            this.tableLayoutPanel8.TabIndex = 5;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.listViewBag);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(3, 42);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(578, 398);
+            this.panel7.TabIndex = 0;
+            // 
             // listViewBag
             // 
             this.listViewBag.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -533,30 +557,6 @@
             this.menuItemEquip.Size = new System.Drawing.Size(116, 30);
             this.menuItemEquip.Text = "装备";
             this.menuItemEquip.Click += new System.EventHandler(this.menuItemEquip_Click);
-            // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.ColumnCount = 1;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Controls.Add(this.panel7, 0, 1);
-            this.tableLayoutPanel8.Controls.Add(this.panel8, 0, 0);
-            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(383, 3);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 2;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.865979F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.13402F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(584, 443);
-            this.tableLayoutPanel8.TabIndex = 5;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.listViewBag);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(3, 42);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(578, 398);
-            this.panel7.TabIndex = 0;
             // 
             // panel8
             // 
@@ -665,9 +665,9 @@
             this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.contextMenuBag.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.contextMenuBag.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);

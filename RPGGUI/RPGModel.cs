@@ -79,10 +79,10 @@ namespace RPGGUI
         public double TotalAttack => Attack + Bag.Sum(e => e.Attack);
         // System.Text.Json 在反序列化时，如果对象有无参构造函数，就会用它创建对象，
         // 然后直接把 JSON 里的字段值赋给对象的同名字段。
-        public Hero()
+        public Hero() //无参构造函数
         {
             Bag = new List<Equipment>(); // 反序列化时，Bag 先初始化成一个空列表
-        } //无参构造函数
+        } 
 
         // ==== 有参构造函数（创建英雄时初始化数据，构造函数必须和类名相同） ==== 
         public Hero(string name, int level, string sex, float attack)
@@ -93,11 +93,8 @@ namespace RPGGUI
             Attack = attack;
 
             // 初始化背包数据，如果不做这一步，Bag就是null，以后往里面放东西会报空引用异常
-
             Bag = new List<Equipment>();
         }
-
-
         //添加一个新方法：用来打印这个英雄的完整信息
         virtual public void ShowInfo() // 子类可以重写
         {
@@ -136,9 +133,7 @@ namespace RPGGUI
                 }
             }
         }
-
         public abstract string GetSkillDescription(); // 子类必须重写
-
     }
 
     public class Warrior : Hero

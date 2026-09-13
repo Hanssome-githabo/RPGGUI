@@ -38,44 +38,6 @@ namespace RPGGUI
             
             RefreshHeroList();
         }
-        
-        #region 刷新英雄列表
-        // 刷新英雄列表
-        private void RefreshHeroList()
-        {
-            listBoxHeroes.Items.Clear();
-            foreach (var hero in heroes)
-            {
-                listBoxHeroes.Items.Add(hero.Name);
-            }
-            if (listBoxHeroes.Items.Count > 0)
-            {
-                listBoxHeroes.SelectedIndex = 0;
-                DisplayHeroDetails(heroes[0]);
-            }
-            else
-            {
-                // 没有英雄时，清空详情显示
-                ClearHeroDetails();
-            }
-
-        }
-        #endregion
-
-        #region 清空英雄详情显示
-        private void ClearHeroDetails()
-        {
-            lblName.Text = "英雄名称：";
-            lblLevel.Text = "英雄等级：";
-            lblSex.Text = "英雄性别：";
-            lblClass.Text = "英雄职业：";
-            lblAttack.Text = "英雄攻击力：";
-            lblSpecial.Text = "特殊属性：";
-            lblSkill.Text = "技能：";
-            listViewBag.Items.Clear();
-            listViewBag.Items.Add("（空）");
-        }
-        #endregion
 
         #region 显示选中英雄的详细信息
         // 显示选中英雄的详细信息
@@ -112,7 +74,7 @@ namespace RPGGUI
             string Sex = hero.Sex == "M" ? "男" : "女";
             lblSex.Text = $"英雄性别：{Sex}";
             lblClass.Text = $"英雄职业：{className}";
-            lblAttack.Text = $"英雄攻击力：{hero.TotalAttack}"; 
+            lblAttack.Text = $"英雄攻击力：{hero.TotalAttack}";
             // 对于攻击力的计算被调用时总会累加，调用一次就累加一次，所以在这里
             // 调用的GetHeroAttack中定义了一个totalAttack变量来存储总攻击力，
             // 每次调用时都会重新计算总攻击力，而不是累加之前的值。
@@ -130,7 +92,59 @@ namespace RPGGUI
             lblStatusBag.Text = $"装备数：{hero.Bag.Count}";
 
             RefreshBagList(hero);
-            
+
+        }
+        #endregion
+
+        #region 显示英雄信息
+        // 点击英雄列表时，显示选中英雄的详细信息
+        private void listBoxHeroes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxHeroes.SelectedIndex < 0 || listBoxHeroes.SelectedIndex >= heroes.Count)
+            {
+                return;
+            }
+
+            Hero selectedHero = heroes[listBoxHeroes.SelectedIndex];
+            DisplayHeroDetails(selectedHero);
+        }
+        #endregion
+
+        #region 刷新英雄列表
+        // 刷新英雄列表
+        private void RefreshHeroList()
+        {
+            listBoxHeroes.Items.Clear();
+            foreach (var hero in heroes)
+            {
+                listBoxHeroes.Items.Add(hero.Name);
+            }
+            if (listBoxHeroes.Items.Count > 0)
+            {
+                listBoxHeroes.SelectedIndex = 0;
+                DisplayHeroDetails(heroes[0]);
+            }
+            else
+            {
+                // 没有英雄时，清空详情显示
+                ClearHeroDetails();
+            }
+
+        }
+        #endregion
+
+        #region 清空英雄详情显示
+        private void ClearHeroDetails()
+        {
+            lblName.Text = "英雄名称：";
+            lblLevel.Text = "英雄等级：";
+            lblSex.Text = "英雄性别：";
+            lblClass.Text = "英雄职业：";
+            lblAttack.Text = "英雄攻击力：";
+            lblSpecial.Text = "特殊属性：";
+            lblSkill.Text = "技能：";
+            listViewBag.Items.Clear();
+            listViewBag.Items.Add("（空）");
         }
         #endregion
 
@@ -206,21 +220,62 @@ namespace RPGGUI
         }
         #endregion
 
-        #region 点击英雄列表时，显示选中英雄的详细信息
-        // 点击英雄列表时，显示选中英雄的详细信息
-        private void listBoxHeroes_SelectedIndexChanged(object sender, EventArgs e)
+        #region 添加英雄
+        private void btnAddHero_Click(object sender, EventArgs e)
         {
-            if(listBoxHeroes.SelectedIndex < 0 || listBoxHeroes.SelectedIndex >= heroes.Count)
+            AddHeroForm addHeroForm = new AddHeroForm();
+            if (addHeroForm.ShowDialog() == DialogResult.OK)
             {
-                return;
-            }
+                Hero newHero = addHeroForm.NewHero;
+                if (newHero == null)
+                {
+                    MessageBox.Show("未创建新英雄。");
+                    return;
+                }
+                else
+                {
+                    heroes.Add(newHero);
+                    RefreshHeroList();
+                    RPGModel.SaveGame(heroes);
+                    MessageBox.Show($"已添加新英雄：{newHero.Name}");
+                }
 
-            Hero selectedHero = heroes[listBoxHeroes.SelectedIndex];
-            DisplayHeroDetails(selectedHero);
+            }
         }
+
         #endregion
 
-        #region 为选中英雄添加装备按钮点击事件
+        #region 删除英雄
+        private void btnRemoveHero_Click(object sender, EventArgs e)
+        {
+            if (heroes == null || heroes.Count == 0)
+            {
+                MessageBox.Show("没有英雄可删除！");
+                return;
+            }
+            if (listBoxHeroes.SelectedIndex < 0 || listBoxHeroes.SelectedIndex >= heroes.Count)
+            {
+                MessageBox.Show("请先选择一个英雄！");
+                return;
+            }
+            DialogResult result = MessageBox.Show(
+                $"确定要删除英雄：{heroes[listBoxHeroes.SelectedIndex].Name}吗？",
+                "确认删除",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                heroes.RemoveAt(listBoxHeroes.SelectedIndex);
+                RefreshHeroList();
+                RPGModel.SaveGame(heroes);
+            }
+        }
+
+        #endregion
+
+        #region 添加装备
         private void btnAddEquipment_Click(object sender, EventArgs e)
         {
             // 检查是否选中了英雄
@@ -256,7 +311,52 @@ namespace RPGGUI
         }
         #endregion
 
-        #region 窗体关闭事件，提示保存游戏数据
+        #region 删除装备
+        // 如果你想在删除后自动选中下一件装备（比如删除第 2 件，自动选中第 3 件），
+        // 可以加一段逻辑，但当前方案已经足够，用户自己重新选择即可。
+        private void btnRemoveEquipment_Click(object sender, EventArgs e)
+        {
+            // 边界条件检查：确保选中了英雄和装备
+            if (listBoxHeroes.SelectedIndex < 0)
+            {
+                MessageBox.Show("请先选择一个英雄！");
+                return;
+            }
+            Hero currentHero = heroes[listBoxHeroes.SelectedIndex];
+            if (listViewBag.SelectedIndices.Count == 0)
+            {
+                MessageBox.Show("请先选择一个装备！");
+                return;
+            }
+
+            // ⭐ 从 Tag 里取真实的 Bag 索引
+            int selectedIndex = (int)listViewBag.SelectedItems[0].Tag;
+
+            // ⭐ 再检查索引有效性
+            if (selectedIndex < 0 || selectedIndex >= currentHero.Bag.Count)
+            {
+                MessageBox.Show("装备索引无效！");
+                return;
+            }
+
+            // 弹出确认删除对话框
+            DialogResult result = MessageBox.Show(
+                $"确定要删除装备：{currentHero.Bag[selectedIndex].Name}吗？",
+                "确认删除",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                currentHero.Bag.RemoveAt(selectedIndex);
+                RefreshBagList(currentHero);
+                RPGModel.SaveGame(heroes);
+            }
+        }
+        #endregion
+
+        #region 窗体关闭
         private void Form1_FormClosing(object sender, FormClosingEventArgs e) // 窗体关闭事件，提示保存游戏数据
         {
             DialogResult result = MessageBox.Show(
@@ -279,7 +379,7 @@ namespace RPGGUI
         }
         #endregion
 
-        #region 保存游戏数据按钮点击事件
+        #region 保存游戏
         private void btnSaveGame_Click(object sender, EventArgs e) // 保存游戏数据按钮点击事件
         {
             // 无英雄数据时，提示用户没有数据可保存
@@ -297,111 +397,7 @@ namespace RPGGUI
         }
         #endregion
 
-        #region 删除选中英雄的装备按钮点击事件
-        // 如果你想在删除后自动选中下一件装备（比如删除第 2 件，自动选中第 3 件），
-        // 可以加一段逻辑，但当前方案已经足够，用户自己重新选择即可。
-        private void btnRemoveEquipment_Click(object sender, EventArgs e)
-        {
-            // 边界条件检查：确保选中了英雄和装备
-            if (listBoxHeroes.SelectedIndex < 0)
-            {
-                MessageBox.Show("请先选择一个英雄！");
-                return;
-            }
-            Hero currentHero = heroes[listBoxHeroes.SelectedIndex];
-            if(listViewBag.SelectedIndices.Count == 0)
-            {
-                MessageBox.Show("请先选择一个装备！");
-                return;
-            }
-
-            // ⭐ 从 Tag 里取真实的 Bag 索引
-            int selectedIndex = (int)listViewBag.SelectedItems[0].Tag;
-
-            // ⭐ 再检查索引有效性
-            if (selectedIndex < 0 || selectedIndex >= currentHero.Bag.Count)
-            {
-                MessageBox.Show("装备索引无效！");
-                return;
-            }
-
-            // 弹出确认删除对话框
-            DialogResult result = MessageBox.Show(
-                $"确定要删除装备：{currentHero.Bag[selectedIndex].Name}吗？", 
-                "确认删除", 
-                MessageBoxButtons.YesNo, 
-                MessageBoxIcon.Warning
-            );
-
-            if (result == DialogResult.Yes)
-            {
-                currentHero.Bag.RemoveAt(selectedIndex);
-                RefreshBagList(currentHero);    
-                RPGModel.SaveGame(heroes); 
-            }
-        }
-
-
-
-
-        #endregion
-
-        #region 添加选中英雄按钮点击事件
-        private void btnAddHero_Click(object sender, EventArgs e)
-        {
-            AddHeroForm addHeroForm = new AddHeroForm();
-            if(addHeroForm.ShowDialog() == DialogResult.OK)
-            {
-                Hero newHero = addHeroForm.NewHero;
-                if (newHero == null)
-                {
-                    MessageBox.Show("未创建新英雄。");
-                    return;
-                }
-                else 
-                {
-                    heroes.Add(newHero);
-                    RefreshHeroList();
-                    RPGModel.SaveGame(heroes);
-                    MessageBox.Show($"已添加新英雄：{newHero.Name}");
-                }
-
-            }
-        }
-
-        #endregion
-
-        #region 删除选中英雄按钮点击事件
-        private void btnRemoveHero_Click(object sender, EventArgs e)
-        {
-            if(heroes == null || heroes.Count == 0)
-            {
-                MessageBox.Show("没有英雄可删除！");
-                return;
-            }
-            if (listBoxHeroes.SelectedIndex < 0 || listBoxHeroes.SelectedIndex >= heroes.Count)
-            {
-                MessageBox.Show("请先选择一个英雄！");
-                return;
-            }
-            DialogResult result = MessageBox.Show(
-                $"确定要删除英雄：{heroes[listBoxHeroes.SelectedIndex].Name}吗？", 
-                "确认删除", 
-                MessageBoxButtons.YesNo, 
-                MessageBoxIcon.Warning
-            );
-
-            if (result == DialogResult.Yes)
-            {
-                heroes.RemoveAt(listBoxHeroes.SelectedIndex);
-                RefreshHeroList();
-                RPGModel.SaveGame(heroes);
-            }
-        }
-
-        #endregion
-
-        #region 退出游戏按钮点击事件
+        #region 退出游戏
         private void btnQuitGame_Main_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -493,7 +489,6 @@ namespace RPGGUI
                 return;
             if (listViewBag.SelectedItems.Count == 0) return;
             
-
             int realIndex = (int)listViewBag.SelectedItems[0].Tag;
             Hero currentHero = heroes[listBoxHeroes.SelectedIndex];
 
