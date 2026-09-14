@@ -70,6 +70,7 @@ namespace RPGGUI
         public string Sex { get; set; }            //性别（M或者F）
         public int Level { get; set; }           //等级
         public float Attack { get; set; }        //基础攻击力（浮点数，方便后续计算）
+        public int Experience { get; set; }
         public List<Equipment> Bag { get; set; }     //背包列表
 
         // 定义一个只读属性，计算英雄的总攻击力（基础攻击力 + 背包里所有装备的攻击力）
@@ -134,6 +135,37 @@ namespace RPGGUI
             }
         }
         public abstract string GetSkillDescription(); // 子类必须重写
+        public abstract void OnLevelUp(); // 子类必须实现
+
+        public void GainExperience(int amount)
+        {
+            Experience += amount;
+
+            // 循环判断，因为一次可能连升多级
+            while (Experience >= GetExpNeededForNextLevel())
+            {
+                Experience -= GetExpNeededForNextLevel();
+                LevelUp();
+            }
+        }
+
+        // 当前等级升到下一级需要多少经验
+        public int GetExpNeededForNextLevel()
+        {
+            // 比如：每级需要 Level * 100 经验
+            // 1级需要100，2级需要200，3级需要300...
+            return Level * 100;
+        }
+
+        // 升级
+        private void LevelUp()
+        {
+            Level++;
+            Attack += 5;      // 所有职业都加基础攻击力
+            OnLevelUp();      // ⭐ 让子类自己决定特殊属性怎么加
+        }
+
+
     }
 
     public class Warrior : Hero
@@ -153,6 +185,11 @@ namespace RPGGUI
         {
             base.ShowInfo();
             Console.WriteLine($"耐力：{Stamina}");
+        }
+
+        public override void OnLevelUp()
+        {
+            Stamina += 20;    // 战士升级加耐力
         }
     }
 
@@ -174,6 +211,12 @@ namespace RPGGUI
             base.ShowInfo();
             Console.WriteLine($"法力：{Mana}");
         }
+
+        public override void OnLevelUp()
+        {
+            Mana += 15;       // 法师升级加法力
+        }
+
     }
 
     public class Assassin : Hero
@@ -194,6 +237,13 @@ namespace RPGGUI
             base.ShowInfo();
             Console.WriteLine($"敏捷：{Agility}");
         }
+
+        // Assassin.cs
+        public override void OnLevelUp()
+        {
+            Agility += 10;    // 刺客升级加敏捷
+        }
+
     }
 
     public class Monster : ISaveable

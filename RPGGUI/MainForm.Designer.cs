@@ -44,22 +44,13 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.btnQuitGame_Main = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.btnQuitGame = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnSaveGame = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.btnLoadGame = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnRemoveHero = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.btnAddHero = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.btnAddEquipment = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.btnRemoveEquipment = new System.Windows.Forms.Button();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.listViewBag = new System.Windows.Forms.ListView();
             this.装备名称 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.攻击力 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -69,8 +60,6 @@
             this.menuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemEquip = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.lblBagTitle = new System.Windows.Forms.Label();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -78,25 +67,43 @@
             this.lblStatusBag = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblStatusMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveGameTimer = new System.Windows.Forms.Timer(this.components);
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.lblExperience = new System.Windows.Forms.Label();
+            this.btnGainExp = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.lblBagTitle = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.expTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.tableLayoutPanel8.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.contextMenuBag.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.panel9.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.tableLayoutPanel12.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.panel16.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -107,7 +114,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel8, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel10, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -120,17 +127,16 @@
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.03493F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.96507F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.btnGainExp, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 452);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(374, 170);
             this.tableLayoutPanel5.TabIndex = 3;
             // 
@@ -166,9 +172,8 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 95.12195F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.878049F));
             this.tableLayoutPanel3.Controls.Add(this.lblName, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.lblSkill, 0, 6);
             this.tableLayoutPanel3.Controls.Add(this.lblSpecial, 0, 5);
@@ -199,7 +204,7 @@
             this.lblName.Location = new System.Drawing.Point(3, 3);
             this.lblName.Margin = new System.Windows.Forms.Padding(3);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(228, 55);
+            this.lblName.Size = new System.Drawing.Size(241, 55);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "lblName";
             // 
@@ -211,7 +216,7 @@
             this.lblSkill.Location = new System.Drawing.Point(3, 369);
             this.lblSkill.Margin = new System.Windows.Forms.Padding(3);
             this.lblSkill.Name = "lblSkill";
-            this.lblSkill.Size = new System.Drawing.Size(228, 61);
+            this.lblSkill.Size = new System.Drawing.Size(241, 61);
             this.lblSkill.TabIndex = 5;
             this.lblSkill.Text = "lblSkill";
             // 
@@ -223,7 +228,7 @@
             this.lblSpecial.Location = new System.Drawing.Point(3, 308);
             this.lblSpecial.Margin = new System.Windows.Forms.Padding(3);
             this.lblSpecial.Name = "lblSpecial";
-            this.lblSpecial.Size = new System.Drawing.Size(228, 55);
+            this.lblSpecial.Size = new System.Drawing.Size(241, 55);
             this.lblSpecial.TabIndex = 4;
             this.lblSpecial.Text = "lblSpecial";
             // 
@@ -235,7 +240,7 @@
             this.lblAttack.Location = new System.Drawing.Point(3, 247);
             this.lblAttack.Margin = new System.Windows.Forms.Padding(3);
             this.lblAttack.Name = "lblAttack";
-            this.lblAttack.Size = new System.Drawing.Size(228, 55);
+            this.lblAttack.Size = new System.Drawing.Size(241, 55);
             this.lblAttack.TabIndex = 3;
             this.lblAttack.Text = "lblAttack";
             // 
@@ -247,7 +252,7 @@
             this.lblClass.Location = new System.Drawing.Point(3, 186);
             this.lblClass.Margin = new System.Windows.Forms.Padding(3);
             this.lblClass.Name = "lblClass";
-            this.lblClass.Size = new System.Drawing.Size(228, 55);
+            this.lblClass.Size = new System.Drawing.Size(241, 55);
             this.lblClass.TabIndex = 2;
             this.lblClass.Text = "lblClass";
             // 
@@ -259,7 +264,7 @@
             this.lblLevel.Location = new System.Drawing.Point(3, 125);
             this.lblLevel.Margin = new System.Windows.Forms.Padding(3);
             this.lblLevel.Name = "lblLevel";
-            this.lblLevel.Size = new System.Drawing.Size(228, 55);
+            this.lblLevel.Size = new System.Drawing.Size(241, 55);
             this.lblLevel.TabIndex = 1;
             this.lblLevel.Text = "lblLevel";
             // 
@@ -271,7 +276,7 @@
             this.lblSex.Location = new System.Drawing.Point(3, 64);
             this.lblSex.Margin = new System.Windows.Forms.Padding(3);
             this.lblSex.Name = "lblSex";
-            this.lblSex.Size = new System.Drawing.Size(228, 55);
+            this.lblSex.Size = new System.Drawing.Size(241, 55);
             this.lblSex.TabIndex = 6;
             this.lblSex.Text = "lblSex";
             // 
@@ -297,10 +302,10 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.Controls.Add(this.btnLoadGame, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.btnQuitGame_Main, 3, 0);
-            this.tableLayoutPanel7.Controls.Add(this.panel6, 2, 0);
-            this.tableLayoutPanel7.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.panel5, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.btnSaveGame, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.button1, 2, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 88);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -320,36 +325,10 @@
             this.btnQuitGame_Main.UseVisualStyleBackColor = true;
             this.btnQuitGame_Main.Click += new System.EventHandler(this.btnQuitGame_Main_Click);
             // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.btnQuitGame);
-            this.panel6.Location = new System.Drawing.Point(291, 3);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(138, 73);
-            this.panel6.TabIndex = 2;
-            // 
-            // btnQuitGame
-            // 
-            this.btnQuitGame.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnQuitGame.Location = new System.Drawing.Point(0, 0);
-            this.btnQuitGame.Name = "btnQuitGame";
-            this.btnQuitGame.Size = new System.Drawing.Size(138, 73);
-            this.btnQuitGame.TabIndex = 2;
-            this.btnQuitGame.Text = "结束游戏";
-            this.btnQuitGame.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnSaveGame);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(138, 73);
-            this.panel1.TabIndex = 0;
-            // 
             // btnSaveGame
             // 
             this.btnSaveGame.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSaveGame.Location = new System.Drawing.Point(0, 0);
+            this.btnSaveGame.Location = new System.Drawing.Point(3, 3);
             this.btnSaveGame.Name = "btnSaveGame";
             this.btnSaveGame.Size = new System.Drawing.Size(138, 73);
             this.btnSaveGame.TabIndex = 1;
@@ -357,18 +336,10 @@
             this.btnSaveGame.UseVisualStyleBackColor = true;
             this.btnSaveGame.Click += new System.EventHandler(this.btnSaveGame_Click);
             // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.btnLoadGame);
-            this.panel5.Location = new System.Drawing.Point(147, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(138, 73);
-            this.panel5.TabIndex = 2;
-            // 
             // btnLoadGame
             // 
             this.btnLoadGame.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLoadGame.Location = new System.Drawing.Point(0, 0);
+            this.btnLoadGame.Location = new System.Drawing.Point(147, 3);
             this.btnLoadGame.Name = "btnLoadGame";
             this.btnLoadGame.Size = new System.Drawing.Size(138, 73);
             this.btnLoadGame.TabIndex = 3;
@@ -382,10 +353,10 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.Controls.Add(this.btnAddEquipment, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.btnRemoveEquipment, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.btnRemoveHero, 3, 0);
-            this.tableLayoutPanel6.Controls.Add(this.panel4, 2, 0);
-            this.tableLayoutPanel6.Controls.Add(this.panel2, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.panel3, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.btnAddHero, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -405,18 +376,10 @@
             this.btnRemoveHero.UseVisualStyleBackColor = true;
             this.btnRemoveHero.Click += new System.EventHandler(this.btnRemoveHero_Click);
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.btnAddHero);
-            this.panel4.Location = new System.Drawing.Point(291, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(138, 73);
-            this.panel4.TabIndex = 2;
-            // 
             // btnAddHero
             // 
             this.btnAddHero.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAddHero.Location = new System.Drawing.Point(0, 0);
+            this.btnAddHero.Location = new System.Drawing.Point(291, 3);
             this.btnAddHero.Name = "btnAddHero";
             this.btnAddHero.Size = new System.Drawing.Size(138, 73);
             this.btnAddHero.TabIndex = 2;
@@ -424,18 +387,10 @@
             this.btnAddHero.UseVisualStyleBackColor = true;
             this.btnAddHero.Click += new System.EventHandler(this.btnAddHero_Click);
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnAddEquipment);
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(138, 73);
-            this.panel2.TabIndex = 1;
-            // 
             // btnAddEquipment
             // 
             this.btnAddEquipment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAddEquipment.Location = new System.Drawing.Point(0, 0);
+            this.btnAddEquipment.Location = new System.Drawing.Point(3, 3);
             this.btnAddEquipment.Name = "btnAddEquipment";
             this.btnAddEquipment.Size = new System.Drawing.Size(138, 73);
             this.btnAddEquipment.TabIndex = 0;
@@ -443,48 +398,16 @@
             this.btnAddEquipment.UseVisualStyleBackColor = true;
             this.btnAddEquipment.Click += new System.EventHandler(this.btnAddEquipment_Click);
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnRemoveEquipment);
-            this.panel3.Location = new System.Drawing.Point(147, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(138, 73);
-            this.panel3.TabIndex = 2;
-            // 
             // btnRemoveEquipment
             // 
             this.btnRemoveEquipment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRemoveEquipment.Location = new System.Drawing.Point(0, 0);
+            this.btnRemoveEquipment.Location = new System.Drawing.Point(147, 3);
             this.btnRemoveEquipment.Name = "btnRemoveEquipment";
             this.btnRemoveEquipment.Size = new System.Drawing.Size(138, 73);
             this.btnRemoveEquipment.TabIndex = 3;
             this.btnRemoveEquipment.Text = "删除装备";
             this.btnRemoveEquipment.UseVisualStyleBackColor = true;
             this.btnRemoveEquipment.Click += new System.EventHandler(this.btnRemoveEquipment_Click);
-            // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.ColumnCount = 1;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Controls.Add(this.panel7, 0, 1);
-            this.tableLayoutPanel8.Controls.Add(this.panel8, 0, 0);
-            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(383, 3);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 2;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.865979F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.13402F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(584, 443);
-            this.tableLayoutPanel8.TabIndex = 5;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.listViewBag);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(3, 42);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(578, 398);
-            this.panel7.TabIndex = 0;
             // 
             // listViewBag
             // 
@@ -500,7 +423,7 @@
             this.listViewBag.HideSelection = false;
             this.listViewBag.Location = new System.Drawing.Point(0, 0);
             this.listViewBag.Name = "listViewBag";
-            this.listViewBag.Size = new System.Drawing.Size(578, 398);
+            this.listViewBag.Size = new System.Drawing.Size(572, 294);
             this.listViewBag.TabIndex = 5;
             this.listViewBag.UseCompatibleStateImageBehavior = false;
             this.listViewBag.View = System.Windows.Forms.View.Details;
@@ -557,25 +480,6 @@
             this.menuItemEquip.Size = new System.Drawing.Size(116, 30);
             this.menuItemEquip.Text = "装备";
             this.menuItemEquip.Click += new System.EventHandler(this.menuItemEquip_Click);
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.lblBagTitle);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(3, 3);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(578, 33);
-            this.panel8.TabIndex = 1;
-            // 
-            // lblBagTitle
-            // 
-            this.lblBagTitle.AutoSize = true;
-            this.lblBagTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblBagTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblBagTitle.Name = "lblBagTitle";
-            this.lblBagTitle.Size = new System.Drawing.Size(142, 24);
-            this.lblBagTitle.TabIndex = 0;
-            this.lblBagTitle.Text = "lblBagTitle";
             // 
             // tableLayoutPanel9
             // 
@@ -638,6 +542,168 @@
             this.saveGameTimer.Interval = 5000;
             this.saveGameTimer.Tick += new System.EventHandler(this.saveGameTimer_Tick);
             // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.tableLayoutPanel11);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(383, 3);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(584, 443);
+            this.panel10.TabIndex = 5;
+            // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.ColumnCount = 1;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.Controls.Add(this.panel12, 0, 1);
+            this.tableLayoutPanel11.Controls.Add(this.panel13, 0, 0);
+            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 2;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.21896F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.78104F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(584, 443);
+            this.tableLayoutPanel11.TabIndex = 0;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.panel11);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(3, 97);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(578, 343);
+            this.panel12.TabIndex = 0;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.tableLayoutPanel12);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel13.Location = new System.Drawing.Point(3, 3);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(578, 88);
+            this.panel13.TabIndex = 1;
+            // 
+            // tableLayoutPanel12
+            // 
+            this.tableLayoutPanel12.ColumnCount = 1;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.Controls.Add(this.panel14, 0, 0);
+            this.tableLayoutPanel12.Controls.Add(this.panel8, 0, 1);
+            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 2;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(578, 88);
+            this.tableLayoutPanel12.TabIndex = 0;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.lblExperience);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel14.Location = new System.Drawing.Point(3, 3);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(572, 38);
+            this.panel14.TabIndex = 0;
+            // 
+            // lblExperience
+            // 
+            this.lblExperience.AutoSize = true;
+            this.lblExperience.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblExperience.Location = new System.Drawing.Point(0, 0);
+            this.lblExperience.Name = "lblExperience";
+            this.lblExperience.Size = new System.Drawing.Size(166, 24);
+            this.lblExperience.TabIndex = 0;
+            this.lblExperience.Text = "lblExperience";
+            // 
+            // btnGainExp
+            // 
+            this.btnGainExp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGainExp.Location = new System.Drawing.Point(3, 3);
+            this.btnGainExp.Name = "btnGainExp";
+            this.btnGainExp.Size = new System.Drawing.Size(368, 50);
+            this.btnGainExp.TabIndex = 0;
+            this.btnGainExp.Text = "打怪（+50经验）";
+            this.btnGainExp.UseVisualStyleBackColor = true;
+            this.btnGainExp.Click += new System.EventHandler(this.btnGainExp_Click);
+            // 
+            // panel8
+            // 
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(3, 47);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(572, 38);
+            this.panel8.TabIndex = 1;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.tableLayoutPanel8);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(578, 343);
+            this.panel11.TabIndex = 0;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 1;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Controls.Add(this.panel15, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.panel16, 0, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.53644F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.46355F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(578, 343);
+            this.tableLayoutPanel8.TabIndex = 0;
+            // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.listViewBag);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel15.Location = new System.Drawing.Point(3, 46);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(572, 294);
+            this.panel15.TabIndex = 0;
+            // 
+            // panel16
+            // 
+            this.panel16.Controls.Add(this.lblBagTitle);
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel16.Location = new System.Drawing.Point(3, 3);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(572, 37);
+            this.panel16.TabIndex = 1;
+            // 
+            // lblBagTitle
+            // 
+            this.lblBagTitle.AutoSize = true;
+            this.lblBagTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblBagTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblBagTitle.Name = "lblBagTitle";
+            this.lblBagTitle.Size = new System.Drawing.Size(142, 24);
+            this.lblBagTitle.TabIndex = 0;
+            this.lblBagTitle.Text = "lblBagTitle";
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(291, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(138, 73);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // expTimer
+            // 
+            this.expTimer.Interval = 3000;
+            this.expTimer.Tick += new System.EventHandler(this.expTimer_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -653,28 +719,31 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.tableLayoutPanel8.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
             this.contextMenuBag.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
+            this.tableLayoutPanel12.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -692,13 +761,6 @@
         private System.Windows.Forms.Label lblSpecial;
         private System.Windows.Forms.Label lblSkill;
         private System.Windows.Forms.Label lblSex;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnQuitGame;
         private System.Windows.Forms.Button btnLoadGame;
         private System.Windows.Forms.Button btnAddHero;
         private System.Windows.Forms.Button btnRemoveEquipment;
@@ -719,10 +781,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemDelete;
         private System.Windows.Forms.ToolStripMenuItem menuItemCopy;
         private System.Windows.Forms.ToolStripMenuItem menuItemEquip;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Label lblBagTitle;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.StatusStrip statusStrip1;
@@ -730,6 +788,22 @@
         private System.Windows.Forms.ToolStripStatusLabel lblStatusBag;
         private System.Windows.Forms.ToolStripStatusLabel lblStatusMessage;
         private System.Windows.Forms.Timer saveGameTimer;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Label lblExperience;
+        private System.Windows.Forms.Button btnGainExp;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label lblBagTitle;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer expTimer;
     }
 }
 

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,7 @@ namespace RPGGUI
         int maxCapacity = 10; // 假设背包最大容量为 10
         private int saveGameTimerTickCount = 0;   // 记录保存提示的 Tick 次数
         private readonly IDataStorage _storage;
+        private int _lastSelectedIndex = -1; // 记录最后一次选中的英雄索引
         public MainForm(List<Hero> loadedHeroes, IDataStorage storage)
         {
             InitializeComponent();
@@ -35,6 +37,7 @@ namespace RPGGUI
             listViewBag.Groups.Add(new ListViewGroup("armor", "护甲"));
             listViewBag.Groups.Add(new ListViewGroup("accessory", "饰品"));
 
+            lblStatusMessage.Text = "正在游玩中";
             RefreshHeroList();
         }
 
@@ -77,6 +80,8 @@ namespace RPGGUI
             // 对于攻击力的计算被调用时总会累加，调用一次就累加一次，所以在这里
             // 调用的GetHeroAttack中定义了一个totalAttack变量来存储总攻击力，
             // 每次调用时都会重新计算总攻击力，而不是累加之前的值。
+            lblExperience.Text = $"经验：{hero.Experience} / {hero.GetExpNeededForNextLevel()}";
+            
 
             if (hero is Warrior warrior)
                 lblSpecial.Text = $"耐力：{warrior.Stamina}";
@@ -87,7 +92,7 @@ namespace RPGGUI
             lblSkill.Text = hero.GetSkillDescription();
 
             // ⭐ 更新状态栏
-            lblStatusHero.Text = $"当前英雄：{hero.Name}";
+            lblStatusHero.Text = $"当前英雄：{hero.Name}（{hero.Level}级）";
             lblStatusBag.Text = $"装备数：{hero.Bag.Count}";
 
             RefreshBagList(hero);
@@ -99,6 +104,12 @@ namespace RPGGUI
         // 点击英雄列表时，显示选中英雄的详细信息
         private void listBoxHeroes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // 记录索引
+            if (listBoxHeroes.SelectedIndex >= 0)
+            {
+                _lastSelectedIndex = listBoxHeroes.SelectedIndex;
+            }
+
             if (listBoxHeroes.SelectedIndex < 0 || listBoxHeroes.SelectedIndex >= heroes.Count)
             {
                 return;
@@ -120,12 +131,12 @@ namespace RPGGUI
             }
             if (listBoxHeroes.Items.Count > 0)
             {
-                listBoxHeroes.SelectedIndex = 0;
-                DisplayHeroDetails(heroes[0]);
+                RecoverIndex();   // ⭐ 自动恢复原选中项
+                // DisplayHeroDetails(heroes[0]);
+                // listBoxHeroes.SelectedIndex = 0 会事件触发不需要上一行的显式调用
             }
             else
             {
-                // 没有英雄时，清空详情显示
                 ClearHeroDetails();
             }
 
@@ -142,8 +153,12 @@ namespace RPGGUI
             lblAttack.Text = "英雄攻击力：";
             lblSpecial.Text = "特殊属性：";
             lblSkill.Text = "技能：";
+            lblExperience.Text = "经验：";
             listViewBag.Items.Clear();
-            listViewBag.Items.Add("（空）");
+
+            var emptyItem = new ListViewItem("（空）");
+            emptyItem.Tag = -1;
+            listViewBag.Items.Add(emptyItem);
         }
         #endregion
 
@@ -161,7 +176,9 @@ namespace RPGGUI
             // 1. 先处理 hero 为 null 或背包为空的情况
             if (hero == null || hero.Bag.Count == 0)
             {
-                listViewBag.Items.Add("（空）");
+                var emptyItem = new ListViewItem("（空）");
+                emptyItem.Tag = -1; // -1 为空
+                listViewBag.Items.Add(emptyItem);
                 return;
             }
 
@@ -264,7 +281,13 @@ namespace RPGGUI
 
             if (result == DialogResult.Yes)
             {
+                int deleteIndex = listBoxHeroes.SelectedIndex;
                 heroes.RemoveAt(listBoxHeroes.SelectedIndex);
+                //// ⭐ 如果删的是最后一个，就往前挪一位
+                //if (deleteIndex >= heroes.Count)
+                //    _lastSelectedIndex = heroes.Count - 1;
+                //else
+                //    _lastSelectedIndex = deleteIndex;
                 RefreshHeroList();
                 _storage.SaveGame(heroes);
             }
@@ -386,6 +409,7 @@ namespace RPGGUI
                 return;
             }
             // 保存游戏数据
+            expTimer.Stop();
             _storage.SaveGame(heroes);
             lblStatusMessage.Text = "已保存游戏数据！";
             saveGameTimerTickCount = 0; // 重置计数器
@@ -423,7 +447,7 @@ namespace RPGGUI
         private void contextMenuBag_Opening(object sender, CancelEventArgs e)
         {
             if (listViewBag.SelectedItems.Count == 0 ||
-                listViewBag.SelectedItems[0].Tag == null)
+                (int)listViewBag.SelectedItems[0].Tag < 0) // == -1
             {
                 menuItemDelete.Enabled = false;
                 menuItemCopy.Enabled = false;
@@ -531,7 +555,7 @@ namespace RPGGUI
         }
         #endregion
 
-        // 双击英雄列表项，弹出输入框修改英雄名称
+        #region 双击英雄列表项，弹出输入框修改英雄名称
         private void listBoxHeroes_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if(listBoxHeroes.SelectedIndex < 0 || listBoxHeroes.SelectedIndex >= heroes.Count)
@@ -557,7 +581,9 @@ namespace RPGGUI
             RefreshHeroList();
             _storage.SaveGame(heroes);
         }
+        #endregion
 
+        // 状态栏的保存游戏的计时器
         private void saveGameTimer_Tick(object sender, EventArgs e)
         {
             saveGameTimerTickCount++; 
@@ -574,6 +600,59 @@ namespace RPGGUI
             }
         }
 
-        
+        // 打怪按钮
+        private void btnGainExp_Click(object sender, EventArgs e)
+        {
+            // 检查是否选中英雄
+            if (listBoxHeroes.SelectedIndex < 0)
+            {
+                MessageBox.Show("请先选择一个英雄！");
+                return;
+            }
+            Hero currentHero = heroes[listBoxHeroes.SelectedIndex];
+
+            int oldLevel = currentHero.Level;
+            currentHero.GainExperience(50);
+            int newLevel = currentHero.Level;
+
+            // ⭐ 升级提示显示在状态栏，不弹窗
+            if (newLevel > oldLevel)
+            {
+                saveGameTimer.Stop();   // ⭐ 停掉保存 Timer，避免冲突
+                lblStatusMessage.Text = $"🎉 {currentHero.Name} 升到了 {newLevel} 级！";
+                expTimer.Start();
+            }
+            RefreshHeroList();
+            _storage.SaveGame(heroes);
+        }
+
+        // 升级计时器
+        private void expTimer_Tick(object sender, EventArgs e)
+        {
+
+            lblStatusMessage.Text = "正在游玩中…";
+            expTimer.Stop();
+        }
+
+        /// <summary>
+        /// 刷新英雄列表后，恢复之前选中的英雄
+        /// </summary>
+        private void RecoverIndex()
+        {
+            if (listBoxHeroes.Items.Count == 0)
+                return;
+
+            // 如果记录的索引还在有效范围，就恢复它
+            if (_lastSelectedIndex >= 0 && _lastSelectedIndex < listBoxHeroes.Items.Count)
+            {
+                listBoxHeroes.SelectedIndex = _lastSelectedIndex;
+            }
+            else
+            {
+                // 越界了（比如删掉了最后一个英雄），就选第一个
+                listBoxHeroes.SelectedIndex = 0;
+            }
+        }
+
     }
 }
