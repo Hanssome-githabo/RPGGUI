@@ -15,9 +15,12 @@ namespace RPGGUI
         public bool IsLoadingCompleted { get; private set; } = false;
         public List<Hero> LoadedHeroes { get; private set; }
         private Random random = new Random();
-        public LoadingForm()
+        private readonly IDataStorage _storage;
+        
+        public LoadingForm(IDataStorage storage)
         {
             InitializeComponent();
+            this._storage = storage;
         }
 
         private async void LoadingForm_Load(object sender, EventArgs e)
@@ -33,13 +36,16 @@ namespace RPGGUI
 
             // 步骤 2：读取存档（30%）
             UpdateProgress(30, "正在读取存档…");
-            List<Hero> heroes = RPGModel.LoadGame<Hero>();
+            List<Hero> heroes = _storage.LoadGame<Hero>();
 
             // 步骤 3：没有存档则创建默认英雄（60%）
             if (heroes == null || heroes.Count == 0)
             {
                 UpdateProgress(50, "首次启动，正在创建默认英雄…");
                 heroes = CreateDefaultHeroes();
+
+                // 把默认英雄立刻保存，避免下次还是"首次"
+                _storage.SaveGame(heroes);
             }
             UpdateProgress(70, "正在加载英雄数据…");
 

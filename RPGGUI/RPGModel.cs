@@ -214,6 +214,8 @@ namespace RPGGUI
 
     internal class RPGModel
     {
+        // 未使用
+        /*
         #region 未使用
         static void Main1(string[] args)
         {
@@ -453,7 +455,8 @@ namespace RPGGUI
 
         }
         #endregion
-
+        */
+        
         #region 从输入得到英雄的0基下标，或返回主菜单
         //静态参数函数 不需要 new 对象，允许我们在没有对象的情况下调用它
         //参数允许它将外部数据（hero 数组）带入其作用域以进行验证。
@@ -464,6 +467,7 @@ namespace RPGGUI
         static int GetHeroIndex(List<Hero> heroes)
         {
             while (true)
+
             {
                 Console.WriteLine("请输入：");
                 string IndexString = Console.ReadLine();
@@ -539,38 +543,6 @@ namespace RPGGUI
 
         }
         #endregion
-
-        #region 全局翻译配置
-        static JsonSerializerOptions options = new JsonSerializerOptions
-        {
-            WriteIndented = true, // 让生成的 JSON 文件有缩进，好看
-            IncludeFields = true,  // 告诉 JSON 库把字段也当作属性一样处理
-            Converters = { new JsonStringEnumConverter() } // 让枚举显示为文字
-        };
-        #endregion
-
-        #region 保存json
-        // 泛型参数 T 允许我们在保存时传入任何实现了 ISaveable 接口的对象列表。
-        // 约束 where T : ISaveable 确保传入的类型必须实现 ISaveable 接口。
-        public static void SaveGame<T>(List<T> saveables) where T : ISaveable
-        {
-            string jsonString = JsonSerializer.Serialize(saveables, options);
-            File.WriteAllText("save.json", jsonString);
-            Console.WriteLine("游戏已保存！");
-        }
-        #endregion
-
-        #region 读取json
-        public static List<T> LoadGame<T>() where T : ISaveable
-        {
-            if (!File.Exists("save.json")) return null;
-            // 2. 读取文件里的 JSON 字符串
-            string jsonString = File.ReadAllText("save.json");
-            // 3. 把 JSON 字符串反翻译回对象列表（使用同样的 options）
-            return JsonSerializer.Deserialize<List<T>>(jsonString, options);
-        }
-        #endregion
-            
 
 
     }

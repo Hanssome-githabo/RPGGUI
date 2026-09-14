@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic; // 用于 InputBox
 
-
 namespace RPGGUI
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private List<Hero> heroes;
         int maxCapacity = 10; // 假设背包最大容量为 10
         private int saveGameTimerTickCount = 0;   // 记录保存提示的 Tick 次数
-
-        public Form1(List<Hero> loadedHeroes)
+        private readonly IDataStorage _storage;
+        public MainForm(List<Hero> loadedHeroes, IDataStorage storage)
         {
             InitializeComponent();
             // ?? 左边为空时，使用右边的默认值
             heroes = loadedHeroes ?? new List<Hero>();
+            _storage = storage;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -35,7 +35,6 @@ namespace RPGGUI
             listViewBag.Groups.Add(new ListViewGroup("armor", "护甲"));
             listViewBag.Groups.Add(new ListViewGroup("accessory", "饰品"));
 
-            
             RefreshHeroList();
         }
 
@@ -236,13 +235,11 @@ namespace RPGGUI
                 {
                     heroes.Add(newHero);
                     RefreshHeroList();
-                    RPGModel.SaveGame(heroes);
+                    _storage.SaveGame(heroes);
                     MessageBox.Show($"已添加新英雄：{newHero.Name}");
                 }
-
             }
         }
-
         #endregion
 
         #region 删除英雄
@@ -269,7 +266,7 @@ namespace RPGGUI
             {
                 heroes.RemoveAt(listBoxHeroes.SelectedIndex);
                 RefreshHeroList();
-                RPGModel.SaveGame(heroes);
+                _storage.SaveGame(heroes);
             }
         }
 
@@ -351,7 +348,7 @@ namespace RPGGUI
             {
                 currentHero.Bag.RemoveAt(selectedIndex);
                 RefreshBagList(currentHero);
-                RPGModel.SaveGame(heroes);
+                _storage.SaveGame(heroes);
             }
         }
         #endregion
@@ -369,7 +366,7 @@ namespace RPGGUI
             if (result == DialogResult.Yes)
             {
                 // 保存游戏数据
-                RPGModel.SaveGame(heroes);
+                _storage.SaveGame(heroes);
                 MessageBox.Show("游戏数据已保存。","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else if (result == DialogResult.Cancel)
@@ -389,7 +386,7 @@ namespace RPGGUI
                 return;
             }
             // 保存游戏数据
-            RPGModel.SaveGame(heroes);
+            _storage.SaveGame(heroes);
             lblStatusMessage.Text = "已保存游戏数据！";
             saveGameTimerTickCount = 0; // 重置计数器
             saveGameTimer.Start();   // 启动定时器
@@ -409,7 +406,7 @@ namespace RPGGUI
             if (result == DialogResult.Yes)
             {
                 // 直接保存并关闭，跳过 FormClosing 的二次提醒
-                RPGModel.SaveGame(heroes);
+                _storage.SaveGame(heroes);
                 MessageBox.Show("游戏数据已保存。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Environment.Exit(0); // 强制退出，不触发 FormClosing
                                      // 或者 this.Close(); 但会触发 FormClosing
@@ -478,7 +475,7 @@ namespace RPGGUI
             {
                 currentHero.Bag.RemoveAt(realIndex);
                 RefreshBagList(currentHero);
-                RPGModel.SaveGame(heroes);
+                _storage.SaveGame(heroes);
             }
 
         }
@@ -504,7 +501,7 @@ namespace RPGGUI
 
             currentHero.Bag.Add(copy);
             RefreshBagList(currentHero);
-            RPGModel.SaveGame(heroes);
+            _storage.SaveGame(heroes);
         }
         // 右键菜单装备装备事件
         private void menuItemEquip_Click(object sender, EventArgs e)
@@ -558,7 +555,7 @@ namespace RPGGUI
 
             currentHero.Name = newName;
             RefreshHeroList();
-            RPGModel.SaveGame(heroes);
+            _storage.SaveGame(heroes);
         }
 
         private void saveGameTimer_Tick(object sender, EventArgs e)

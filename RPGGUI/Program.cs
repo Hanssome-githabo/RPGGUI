@@ -16,16 +16,20 @@ namespace RPGGUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // 1. 显示加载窗体，执行真实加载
-            LoadingForm loadingForm = new LoadingForm();
-            loadingForm.ShowDialog();  // 加载窗体关闭后，这里才继续往下执行
-            // 如果加载没有完成（用户手动关闭了），就直接退出程序
+
+            // 在这里创建具体的存储实现
+            IDataStorage storage = new JsonStorage();
+
+            // 把storage注入到LoadingForm
+            LoadingForm loadingForm = new LoadingForm(storage);
+            loadingForm.ShowDialog();
+
             if (!loadingForm.IsLoadingCompleted)
-            {
-                return;   // 不启动主窗口，退出
-            }
-            // 3. 把加载好的数据传给主窗体
-            Application.Run(new Form1(loadingForm.LoadedHeroes));
+                return;
+
+            // ⭐ 把 storage 和加载好的数据一起注入给 Form1
+            Application.Run(new MainForm(loadingForm.LoadedHeroes, storage));
+
         }
     }
 }
