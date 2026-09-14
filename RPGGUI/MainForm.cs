@@ -19,6 +19,7 @@ namespace RPGGUI
         private int saveGameTimerTickCount = 0;   // 记录保存提示的 Tick 次数
         private readonly IDataStorage _storage;
         private int _lastSelectedIndex = -1; // 记录最后一次选中的英雄索引
+
         public MainForm(List<Hero> loadedHeroes, IDataStorage storage)
         {
             InitializeComponent();
@@ -77,6 +78,7 @@ namespace RPGGUI
             lblSex.Text = $"英雄性别：{Sex}";
             lblClass.Text = $"英雄职业：{className}";
             lblAttack.Text = $"英雄攻击力：{hero.TotalAttack}";
+            lblCurrentHP.Text = $"英雄血量：{hero.CurrentHP}";
             // 对于攻击力的计算被调用时总会累加，调用一次就累加一次，所以在这里
             // 调用的GetHeroAttack中定义了一个totalAttack变量来存储总攻击力，
             // 每次调用时都会重新计算总攻击力，而不是累加之前的值。
@@ -379,23 +381,26 @@ namespace RPGGUI
         #region 窗体关闭
         private void Form1_FormClosing(object sender, FormClosingEventArgs e) // 窗体关闭事件，提示保存游戏数据
         {
-            DialogResult result = MessageBox.Show(
-                "是否保存游戏数据？",             // 提示文本
-                "提示",                           // 标题
-                MessageBoxButtons.YesNoCancel,    // 按钮类型
-                MessageBoxIcon.Question           // 图标类型
-                );         
+            // 自动保存模式下，关闭时不需要提示
+            // 数据在每次改动后已经保存
 
-            if (result == DialogResult.Yes)
-            {
-                // 保存游戏数据
-                _storage.SaveGame(heroes);
-                MessageBox.Show("游戏数据已保存。","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            }
-            else if (result == DialogResult.Cancel)
-            {
-                e.Cancel = true; // 取消关闭窗口
-            }
+            //DialogResult result = MessageBox.Show(
+            //    "是否保存游戏数据？",             // 提示文本
+            //    "提示",                           // 标题
+            //    MessageBoxButtons.YesNoCancel,    // 按钮类型
+            //    MessageBoxIcon.Question           // 图标类型
+            //    );         
+
+            //if (result == DialogResult.Yes)
+            //{
+            //    // 保存游戏数据
+            //    _storage.SaveGame(heroes);
+            //    MessageBox.Show("游戏数据已保存。","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            //}
+            //else if (result == DialogResult.Cancel)
+            //{
+            //    e.Cancel = true; // 取消关闭窗口
+            //}
         }
         #endregion
 
@@ -421,20 +426,23 @@ namespace RPGGUI
         #region 退出游戏
         private void btnQuitGame_Main_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-                "是否保存游戏数据？",             // 提示文本
-                "提示",                           // 标题
-                MessageBoxButtons.YesNoCancel,    // 按钮类型
-                MessageBoxIcon.Question           // 图标类型
-                );
-            if (result == DialogResult.Yes)
-            {
-                // 直接保存并关闭，跳过 FormClosing 的二次提醒
-                _storage.SaveGame(heroes);
-                MessageBox.Show("游戏数据已保存。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Environment.Exit(0); // 强制退出，不触发 FormClosing
-                                     // 或者 this.Close(); 但会触发 FormClosing
-            }
+            _storage.SaveGame(heroes);   // 保险起见再保存一次
+            Environment.Exit(0);
+
+            //DialogResult result = MessageBox.Show(
+            //    "是否保存游戏数据？",             // 提示文本
+            //    "提示",                           // 标题
+            //    MessageBoxButtons.YesNoCancel,    // 按钮类型
+            //    MessageBoxIcon.Question           // 图标类型
+            //    );
+            //if (result == DialogResult.Yes)
+            //{
+            //    // 直接保存并关闭，跳过 FormClosing 的二次提醒
+            //    _storage.SaveGame(heroes);
+            //    MessageBox.Show("游戏数据已保存。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    Environment.Exit(0); // 强制退出，不触发 FormClosing
+            //                         // 或者 this.Close(); 但会触发 FormClosing
+            //}
 
 
         }
@@ -583,6 +591,7 @@ namespace RPGGUI
         }
         #endregion
 
+        #region 计时器
         // 状态栏的保存游戏的计时器
         private void saveGameTimer_Tick(object sender, EventArgs e)
         {
@@ -599,6 +608,14 @@ namespace RPGGUI
                 saveGameTimer.Stop();   // 停止 Timer
             }
         }
+        // 升级计时器
+        private void expTimer_Tick(object sender, EventArgs e)
+        {
+
+            lblStatusMessage.Text = "正在游玩中…";
+            expTimer.Stop();
+        }
+        #endregion
 
         // 打怪按钮
         private void btnGainExp_Click(object sender, EventArgs e)
@@ -626,14 +643,6 @@ namespace RPGGUI
             _storage.SaveGame(heroes);
         }
 
-        // 升级计时器
-        private void expTimer_Tick(object sender, EventArgs e)
-        {
-
-            lblStatusMessage.Text = "正在游玩中…";
-            expTimer.Stop();
-        }
-
         /// <summary>
         /// 刷新英雄列表后，恢复之前选中的英雄
         /// </summary>
@@ -652,6 +661,25 @@ namespace RPGGUI
                 // 越界了（比如删掉了最后一个英雄），就选第一个
                 listBoxHeroes.SelectedIndex = 0;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Monster slime = new Monster("史莱姆", 100, 10, 1000);
+            MessageBox.Show($"{slime.Name}，HP {slime.CurrentHP}");
+            GetAllMonsters();
+        }
+
+        private List<Monster> GetAllMonsters()
+        {
+            return new List<Monster>
+            {
+                new Monster("史莱姆", 80, 15, 50),
+                new Monster("哥布林", 120, 25, 100),
+                new Monster("野狼", 100, 30, 120),
+                new Monster("石巨人", 300, 40, 300),
+                new Monster("巨龙", 800, 80, 1000)
+            };
         }
 
     }

@@ -71,6 +71,8 @@ namespace RPGGUI
         public int Level { get; set; }           //等级
         public float Attack { get; set; }        //基础攻击力（浮点数，方便后续计算）
         public int Experience { get; set; }
+        public int MaxHP { get; set; } = 100;   // 最大血量
+        public int CurrentHP { get; set; }       // 当前血量
         public List<Equipment> Bag { get; set; }     //背包列表
 
         // 定义一个只读属性，计算英雄的总攻击力（基础攻击力 + 背包里所有装备的攻击力）
@@ -83,6 +85,7 @@ namespace RPGGUI
         public Hero() //无参构造函数
         {
             Bag = new List<Equipment>(); // 反序列化时，Bag 先初始化成一个空列表
+            CurrentHP = MaxHP;   // ⭐ 加这行
         } 
 
         // ==== 有参构造函数（创建英雄时初始化数据，构造函数必须和类名相同） ==== 
@@ -92,9 +95,13 @@ namespace RPGGUI
             Level = level;
             Sex = sex;
             Attack = attack;
-
+            CurrentHP = MaxHP;   // ⭐ 加这行
             // 初始化背包数据，如果不做这一步，Bag就是null，以后往里面放东西会报空引用异常
             Bag = new List<Equipment>();
+        }
+        public bool IsAlive()
+        {
+            return CurrentHP > 0;
         }
         //添加一个新方法：用来打印这个英雄的完整信息
         virtual public void ShowInfo() // 子类可以重写
@@ -248,12 +255,31 @@ namespace RPGGUI
 
     public class Monster : ISaveable
     {
-        public string Name { get; set; }
+        public string Name { get; set; }        // 怪物名称
+        public int MaxHP { get; set; } = 100;         // 最大血量
+        public int CurrentHP { get; set; }       // 当前血量
+        public int Attack { get; set; }          // 攻击力
+        public int RewardExp { get; set; }       // 击败后获得的经验
         public List<Equipment> Bag { get; set; }
-        public int Health { get; set; }
+        public Monster()
+        {
+            Bag = new List<Equipment>();   // ⭐ 初始化 Bag
+        }
+        public Monster(string name, int maxHp, int attack, int rewardExp)
+        {
+            Name = name;
+            MaxHP = maxHp;
+            CurrentHP = maxHp;
+            Attack = attack;
+            RewardExp = rewardExp;
+        }
 
+        public bool IsAlive()
+        {
+            return CurrentHP > 0;
+        }
     }
-
+  
     // 接口 ： 它只定义了“能做什么”，不关心“你是谁”
     public interface ISaveable
     {

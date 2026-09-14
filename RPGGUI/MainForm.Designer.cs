@@ -83,6 +83,8 @@
             this.lblBagTitle = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.expTimer = new System.Windows.Forms.Timer(this.components);
+            this.button2 = new System.Windows.Forms.Button();
+            this.lblCurrentHP = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -130,6 +132,7 @@
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Controls.Add(this.btnGainExp, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.button2, 0, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 452);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -175,17 +178,18 @@
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 95.12195F));
             this.tableLayoutPanel3.Controls.Add(this.lblName, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.lblSkill, 0, 6);
-            this.tableLayoutPanel3.Controls.Add(this.lblSpecial, 0, 5);
-            this.tableLayoutPanel3.Controls.Add(this.lblAttack, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.lblClass, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.lblLevel, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.lblSex, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.lblSkill, 0, 7);
+            this.tableLayoutPanel3.Controls.Add(this.lblSpecial, 0, 6);
+            this.tableLayoutPanel3.Controls.Add(this.lblAttack, 0, 5);
+            this.tableLayoutPanel3.Controls.Add(this.lblCurrentHP, 0, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(121, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 7;
+            this.tableLayoutPanel3.RowCount = 8;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -193,6 +197,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(247, 433);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
@@ -204,43 +209,40 @@
             this.lblName.Location = new System.Drawing.Point(3, 3);
             this.lblName.Margin = new System.Windows.Forms.Padding(3);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(241, 55);
+            this.lblName.Size = new System.Drawing.Size(241, 53);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "lblName";
             // 
             // lblSkill
             // 
             this.lblSkill.AutoSize = true;
-            this.lblSkill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblSkill.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblSkill.Location = new System.Drawing.Point(3, 369);
+            this.lblSkill.Location = new System.Drawing.Point(3, 416);
             this.lblSkill.Margin = new System.Windows.Forms.Padding(3);
             this.lblSkill.Name = "lblSkill";
-            this.lblSkill.Size = new System.Drawing.Size(241, 61);
+            this.lblSkill.Size = new System.Drawing.Size(106, 14);
             this.lblSkill.TabIndex = 5;
             this.lblSkill.Text = "lblSkill";
             // 
             // lblSpecial
             // 
             this.lblSpecial.AutoSize = true;
-            this.lblSpecial.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblSpecial.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblSpecial.Location = new System.Drawing.Point(3, 308);
+            this.lblSpecial.Location = new System.Drawing.Point(3, 357);
             this.lblSpecial.Margin = new System.Windows.Forms.Padding(3);
             this.lblSpecial.Name = "lblSpecial";
-            this.lblSpecial.Size = new System.Drawing.Size(241, 55);
+            this.lblSpecial.Size = new System.Drawing.Size(130, 24);
             this.lblSpecial.TabIndex = 4;
             this.lblSpecial.Text = "lblSpecial";
             // 
             // lblAttack
             // 
             this.lblAttack.AutoSize = true;
-            this.lblAttack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblAttack.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblAttack.Location = new System.Drawing.Point(3, 247);
+            this.lblAttack.Location = new System.Drawing.Point(3, 298);
             this.lblAttack.Margin = new System.Windows.Forms.Padding(3);
             this.lblAttack.Name = "lblAttack";
-            this.lblAttack.Size = new System.Drawing.Size(241, 55);
+            this.lblAttack.Size = new System.Drawing.Size(118, 24);
             this.lblAttack.TabIndex = 3;
             this.lblAttack.Text = "lblAttack";
             // 
@@ -249,10 +251,10 @@
             this.lblClass.AutoSize = true;
             this.lblClass.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblClass.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblClass.Location = new System.Drawing.Point(3, 186);
+            this.lblClass.Location = new System.Drawing.Point(3, 180);
             this.lblClass.Margin = new System.Windows.Forms.Padding(3);
             this.lblClass.Name = "lblClass";
-            this.lblClass.Size = new System.Drawing.Size(241, 55);
+            this.lblClass.Size = new System.Drawing.Size(241, 53);
             this.lblClass.TabIndex = 2;
             this.lblClass.Text = "lblClass";
             // 
@@ -261,10 +263,10 @@
             this.lblLevel.AutoSize = true;
             this.lblLevel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblLevel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblLevel.Location = new System.Drawing.Point(3, 125);
+            this.lblLevel.Location = new System.Drawing.Point(3, 121);
             this.lblLevel.Margin = new System.Windows.Forms.Padding(3);
             this.lblLevel.Name = "lblLevel";
-            this.lblLevel.Size = new System.Drawing.Size(241, 55);
+            this.lblLevel.Size = new System.Drawing.Size(241, 53);
             this.lblLevel.TabIndex = 1;
             this.lblLevel.Text = "lblLevel";
             // 
@@ -273,10 +275,10 @@
             this.lblSex.AutoSize = true;
             this.lblSex.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblSex.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblSex.Location = new System.Drawing.Point(3, 64);
+            this.lblSex.Location = new System.Drawing.Point(3, 62);
             this.lblSex.Margin = new System.Windows.Forms.Padding(3);
             this.lblSex.Name = "lblSex";
-            this.lblSex.Size = new System.Drawing.Size(241, 55);
+            this.lblSex.Size = new System.Drawing.Size(241, 53);
             this.lblSex.TabIndex = 6;
             this.lblSex.Text = "lblSex";
             // 
@@ -704,6 +706,26 @@
             this.expTimer.Interval = 3000;
             this.expTimer.Tick += new System.EventHandler(this.expTimer_Tick);
             // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.Location = new System.Drawing.Point(3, 59);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(368, 50);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // lblCurrentHP
+            // 
+            this.lblCurrentHP.AutoSize = true;
+            this.lblCurrentHP.Location = new System.Drawing.Point(3, 236);
+            this.lblCurrentHP.Name = "lblCurrentHP";
+            this.lblCurrentHP.Size = new System.Drawing.Size(154, 24);
+            this.lblCurrentHP.TabIndex = 7;
+            this.lblCurrentHP.Text = "lblCurrentHP";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -804,6 +826,8 @@
         private System.Windows.Forms.Label lblBagTitle;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer expTimer;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label lblCurrentHP;
     }
 }
 
